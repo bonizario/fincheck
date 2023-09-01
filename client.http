@@ -1,0 +1,11 @@
+@api_url = http://localhost:3333
+
+# @name create_user
+POST {{api_url}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Gabriel",
+  "email": "gabriel@example.com",
+  "password": "asdfasdf"
+}
