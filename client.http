@@ -7,5 +7,16 @@ Content-Type: application/json
 {
   "name": "Gabriel",
   "email": "gabriel@example.com",
-  "password": "asdfasdf"
+  "password": "12345678"
+}
+
+###
+
+# @name sign_in
+POST {{api_url}}/auth/signin HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "gabriel@example.com",
+  "password": "12345678"
 }
