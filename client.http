@@ -1,7 +1,7 @@
 @api_url = http://localhost:3333
 
-# @name create_user
-POST {{api_url}}/users HTTP/1.1
+# @name sign_up
+POST {{api_url}}/auth/signup HTTP/1.1
 Content-Type: application/json
 
 {
