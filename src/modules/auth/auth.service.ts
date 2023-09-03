@@ -23,13 +23,13 @@ export class AuthService {
 
     if (!user) {
       await hash(password, 12);
-      throw new UnauthorizedException('invalid credentials');
+      throw new UnauthorizedException('Invalid credentials');
     }
 
     const isPasswordValid = await compare(password, user?.password ?? '');
 
     if (!isPasswordValid) {
-      throw new UnauthorizedException('invalid credentials');
+      throw new UnauthorizedException('Invalid credentials');
     }
 
     const accessToken = await this.generateAccessToken(user.id);
@@ -47,7 +47,7 @@ export class AuthService {
     });
 
     if (emailTaken) {
-      throw new ConflictException('This email is already in use.');
+      throw new ConflictException('This email is already in use');
     }
 
     const hashedPassword = await hash(password, 12);
