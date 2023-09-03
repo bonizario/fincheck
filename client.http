@@ -1,7 +1,8 @@
-@api_url = http://localhost:3333
+@baseUrl = http://localhost:3333
+@authToken = {{signIn.response.body.accessToken}}
 
-# @name sign_up
-POST {{api_url}}/auth/signup HTTP/1.1
+# @name signUp
+POST {{baseUrl}}/auth/signup HTTP/1.1
 Content-Type: application/json
 
 {
@@ -12,11 +13,18 @@ Content-Type: application/json
 
 ###
 
-# @name sign_in
-POST {{api_url}}/auth/signin HTTP/1.1
+# @name signIn
+POST {{baseUrl}}/auth/signin HTTP/1.1
 Content-Type: application/json
 
 {
   "email": "gabriel@example.com",
   "password": "12345678"
 }
+
+###
+
+# @name me
+GET {{baseUrl}}/users/me HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
