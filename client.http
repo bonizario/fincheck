@@ -8,6 +8,7 @@
 @bankAccountId2 = {{listBankAccounts2.response.body.$[0].id}}
 @transactionId1 = {{listTransactions1.response.body.$[0].id}}
 @transactionId2 = {{listTransactions2.response.body.$[0].id}}
+
 ###
 
 // @name signUp1
@@ -276,9 +277,16 @@ Authorization: {{authToken1}}
   "type": "INCOME"
 }
 
-# ###
+###
 
-# // @name deleteTransaction
-# DELETE {{baseUrl}}/transactions/1
-# Content-Type: application/json
-# Authorization: {{authToken1}}
+// @name deleteTransaction1
+DELETE {{baseUrl}}/transactions/{{transactionId1}}
+Content-Type: application/json
+Authorization: {{authToken1}}
+
+###
+
+// @name deleteTransaction1Forbidden
+DELETE {{baseUrl}}/transactions/{{transactionId2}}
+Content-Type: application/json
+Authorization: {{authToken1}}

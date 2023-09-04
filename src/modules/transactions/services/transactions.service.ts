@@ -45,6 +45,7 @@ export class TransactionsService {
     const { bankAccountId, categoryId, name, value, date, type } = updateTransactionDto;
 
     await this.validateOwnership({ userId, bankAccountId, categoryId, transactionId });
+
     return this.transactionsRepository.update({
       where: {
         id: transactionId,
@@ -60,8 +61,16 @@ export class TransactionsService {
     });
   }
 
-  remove(transactionId: string) {
-    return `This action removes a #${transactionId} transaction`;
+  async remove(userId: string, transactionId: string) {
+    await this.validateOwnership({ userId, transactionId });
+
+    await this.transactionsRepository.delete({
+      where: {
+        id: transactionId,
+      },
+    });
+
+    return null;
   }
 
   private async validateOwnership({
@@ -71,14 +80,14 @@ export class TransactionsService {
     transactionId,
   }: {
     userId: string;
-    bankAccountId: string;
-    categoryId: string;
+    bankAccountId?: string;
+    categoryId?: string;
     transactionId?: string;
   }) {
     return Promise.all([
       transactionId && this.validateTransactionOwnershipService.validate(userId, transactionId),
-      this.validateBankAccountOwnershipService.validate(userId, bankAccountId),
-      this.validateCategoryOwnershipService.validate(userId, categoryId),
+      bankAccountId && this.validateBankAccountOwnershipService.validate(userId, bankAccountId),
+      categoryId && this.validateCategoryOwnershipService.validate(userId, categoryId),
     ]);
   }
 }
