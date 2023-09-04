@@ -1,6 +1,8 @@
 @baseUrl = http://localhost:3333
 @authToken = {{signIn.response.body.accessToken}}
 
+###
+
 # @name signUp
 POST {{baseUrl}}/auth/signup HTTP/1.1
 Content-Type: application/json
@@ -33,5 +35,51 @@ Authorization: Bearer {{authToken}}
 
 # @name listCategories
 GET {{baseUrl}}/categories HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name createBankAccount
+POST {{baseUrl}}/bank-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "Nubank",
+  "color": "#7950F2",
+  "initialBalance": 1000,
+  "type": "CHECKING"
+}
+
+###
+
+# @name listBankAccounts
+GET {{baseUrl}}/bank-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name showBankAccount
+GET {{baseUrl}}/bank-accounts/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name updateBankAccount
+PUT {{baseUrl}}/bank-accounts/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "Updated Name"
+}
+
+###
+
+# @name deleteBankAccount
+DELETE {{baseUrl}}/bank-accounts/1 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
