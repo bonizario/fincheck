@@ -1,5 +1,8 @@
 @baseUrl = http://localhost:3333
 @authToken = {{signIn.response.body.accessToken}}
+@bankAccountId = {{createBankAccount.response.body.id}}
+@invalidBankAccountId = 123
+@forbiddenBankAccountId = db340264-14a1-4daa-9a78-24ece7033a23
 
 ###
 
@@ -40,6 +43,13 @@ Authorization: Bearer {{authToken}}
 
 ###
 
+# @name listBankAccounts
+GET {{baseUrl}}/bank-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
 # @name createBankAccount
 POST {{baseUrl}}/bank-accounts HTTP/1.1
 Content-Type: application/json
@@ -54,32 +64,21 @@ Authorization: Bearer {{authToken}}
 
 ###
 
-# @name listBankAccounts
-GET {{baseUrl}}/bank-accounts HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
-
-###
-
-# @name showBankAccount
-GET {{baseUrl}}/bank-accounts/1 HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
-
-###
-
 # @name updateBankAccount
-PUT {{baseUrl}}/bank-accounts/1 HTTP/1.1
+PUT {{baseUrl}}/bank-accounts/{{bankAccountId}} HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "name": "Updated Name"
+  "name": "Nubank 2.0",
+  "color": "#7950F2",
+  "initialBalance": 20000,
+  "type": "CHECKING"
 }
 
 ###
 
 # @name deleteBankAccount
-DELETE {{baseUrl}}/bank-accounts/1 HTTP/1.1
+DELETE {{baseUrl}}/bank-accounts/{{forbiddenBankAccountId}} HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
