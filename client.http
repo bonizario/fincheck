@@ -3,6 +3,8 @@
 @bankAccountId = {{createBankAccount.response.body.id}}
 @invalidBankAccountId = 123
 @forbiddenBankAccountId = db340264-14a1-4daa-9a78-24ece7033a23
+@categoryId = {{listCategories.response.body.$[0].id}}
+@createdAt = {{$datetime iso8601}}
 
 ###
 
@@ -80,5 +82,45 @@ Authorization: Bearer {{authToken}}
 
 # @name deleteBankAccount
 DELETE {{baseUrl}}/bank-accounts/{{forbiddenBankAccountId}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name listTransactions
+GET {{baseUrl}}/transactions HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name createTransaction
+POST {{baseUrl}}/transactions HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "bankAccountId": "{{bankAccountId}}",
+  "categoryId": "{{categoryId}}",
+  "name": "Salário",
+  "value": 6000,
+  "date": "{{createdAt}}",
+  "type": "INCOME"
+}
+
+###
+
+# @name updateTransaction
+PUT {{baseUrl}}/transactions/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+}
+
+###
+
+# @name deleteTransaction
+DELETE {{baseUrl}}/transactions/1 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
