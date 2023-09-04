@@ -2,11 +2,12 @@
 @createdAt = {{$datetime iso8601}}
 @authToken1 = Bearer {{signIn1.response.body.accessToken}}
 @authToken2 = Bearer {{signIn2.response.body.accessToken}}
-@bankAccountId1 = {{listBankAccounts1.response.body.$[0].id}}
-@bankAccountId2 = {{listBankAccounts2.response.body.$[0].id}}
 @categoryId1 = {{listCategories1.response.body.$[0].id}}
 @categoryId2 = {{listCategories2.response.body.$[0].id}}
-
+@bankAccountId1 = {{listBankAccounts1.response.body.$[0].id}}
+@bankAccountId2 = {{listBankAccounts2.response.body.$[0].id}}
+@transactionId1 = {{listTransactions1.response.body.$[0].id}}
+@transactionId2 = {{listTransactions2.response.body.$[0].id}}
 ###
 
 // @name signUp1
@@ -227,15 +228,53 @@ GET {{baseUrl}}/transactions
 Content-Type: application/json
 Authorization: {{authToken2}}
 
-# ###
+###
 
-# // @name updateTransaction
-# PUT {{baseUrl}}/transactions/1
-# Content-Type: application/json
-# Authorization: {{authToken1}}
+// @name updateTransaction1
+PUT {{baseUrl}}/transactions/{{transactionId1}}
+Content-Type: application/json
+Authorization: {{authToken1}}
 
-# {
-# }
+{
+  "bankAccountId": "{{bankAccountId1}}",
+  "categoryId": "{{categoryId1}}",
+  "name": "Salário",
+  "value": 12000,
+  "date": "{{createdAt}}",
+  "type": "INCOME"
+}
+
+###
+
+// @name updateTransaction1ParamsForbidden
+PUT {{baseUrl}}/transactions/{{transactionId1}}
+Content-Type: application/json
+Authorization: {{authToken1}}
+
+{
+  "bankAccountId": "{{bankAccountId2}}",
+  "categoryId": "{{categoryId2}}",
+  "name": "Salário",
+  "value": 12000,
+  "date": "{{createdAt}}",
+  "type": "INCOME"
+}
+
+###
+
+// @name updateTransaction1Forbidden
+PUT {{baseUrl}}/transactions/{{transactionId2}}
+Content-Type: application/json
+Authorization: {{authToken1}}
+
+{
+  "bankAccountId": "{{bankAccountId1}}",
+  "categoryId": "{{categoryId1}}",
+  "name": "Salário",
+  "value": 12000,
+  "date": "{{createdAt}}",
+  "type": "INCOME"
+}
 
 # ###
 
