@@ -7,15 +7,15 @@ import { PrismaService } from '../prisma.service';
 export class BankAccountsRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  create(createDto: Prisma.BankAccountCreateArgs) {
-    return this.prismaService.bankAccount.create(createDto);
+  create(createArgs: Prisma.BankAccountCreateArgs) {
+    return this.prismaService.bankAccount.create(createArgs);
   }
 
-  findMany(findManyDto: Prisma.BankAccountFindManyArgs) {
-    return this.prismaService.bankAccount.findMany(findManyDto);
+  findMany(findManyArgs: Prisma.BankAccountFindManyArgs) {
+    return this.prismaService.bankAccount.findMany(findManyArgs);
   }
 
-  findUnique(findUniqueDto: Prisma.BankAccountFindUniqueArgs) {
-    return this.prismaService.bankAccount.findUnique(findUniqueDto);
+  findUnique(findUniqueArgs: Prisma.BankAccountFindUniqueArgs) {
+    return this.prismaService.bankAccount.findUnique(findUniqueArgs);
   }
 }
