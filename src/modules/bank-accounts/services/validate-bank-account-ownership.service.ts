@@ -14,7 +14,7 @@ export class ValidateBankAccountOwnershipService {
     });
 
     if (!isBankAccountOwnedByUser) {
-      throw new NotFoundException();
+      throw new NotFoundException('Bank account not found');
     }
   }
 }

@@ -35,5 +35,5 @@ export class CreateTransactionDto {
 
   @IsNotEmpty()
   @IsEnum(TransactionType)
-  type: string;
+  type: TransactionType;
 }
