@@ -219,6 +219,10 @@ Authorization: {{authToken1}}
 
 // @name listTransactions1
 GET {{baseUrl}}/transactions
+    ?month=8
+    &year=2023
+    &type=INCOME
+    &bankAccountId={{bankAccountId1}}
 Content-Type: application/json
 Authorization: {{authToken1}}
 
