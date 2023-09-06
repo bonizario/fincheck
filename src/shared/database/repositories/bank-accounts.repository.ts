@@ -7,7 +7,9 @@ import { PrismaService } from '../prisma.service';
 export class BankAccountsRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  findMany(findManyArgs: Prisma.BankAccountFindManyArgs) {
+  findMany<T extends Prisma.BankAccountFindManyArgs>(
+    findManyArgs: Prisma.SelectSubset<T, Prisma.BankAccountFindManyArgs>
+  ) {
     return this.prismaService.bankAccount.findMany(findManyArgs);
   }
 
