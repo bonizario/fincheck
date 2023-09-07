@@ -1,12 +1,17 @@
 import { ComponentProps } from 'react';
 
+import { cn } from '../../app/utils/cn';
+
 interface ButtonProps extends ComponentProps<'button'> {}
 
-export function Button(props: ButtonProps) {
+export function Button({ className, ...props }: ButtonProps) {
   return (
     <button
       {...props}
-      className="bg-teal-900 hover:bg-teal-800 px-6 h-12 rounded-2xl text-white font-medium tracking-[-0.5px] disabled:bg-gray-100 disabled:text-gray-600 disabled:cursor-not-allowed transition-all"
+      className={cn(
+        'h-12 rounded-2xl bg-teal-900 px-6 font-medium tracking-[-0.5px] text-white transition-all hover:bg-teal-800 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-600',
+        className
+      )}
     />
   );
 }

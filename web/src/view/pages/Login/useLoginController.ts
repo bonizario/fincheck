@@ -1,16 +1,29 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-type FieldValues = {
-  email: string;
-  password: string;
-};
+const schema = z.object({
+  email: z.string().nonempty('Email é obrigatório.').email('Insira um email válido.'),
+  password: z
+    .string()
+    .nonempty('Senha é obrigatória.')
+    .min(8, 'Senha deve ter pelo menos 8 caracteres.'),
+});
+
+type FormData = z.infer<typeof schema>;
 
 export function useLoginController() {
-  const { handleSubmit: hookFormHandleSubmit, register } = useForm<FieldValues>();
-
-  const handleSubmit = hookFormHandleSubmit(data => {
-    console.log({ data });
+  const {
+    handleSubmit: hookFormHandleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
   });
 
-  return { handleSubmit, register };
+  const handleSubmit = hookFormHandleSubmit(data => {
+    console.log(data);
+  });
+
+  return { handleSubmit, register, errors };
 }

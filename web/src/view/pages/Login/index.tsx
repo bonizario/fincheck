@@ -5,7 +5,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 export function Login() {
-  const { handleSubmit, register } = useLoginController();
+  const { handleSubmit, register, errors } = useLoginController();
 
   return (
     <>
@@ -19,10 +19,20 @@ export function Login() {
         </p>
       </header>
 
-      <form onSubmit={handleSubmit} className="mt-[60px] flex flex-col gap-4">
-        <Input type="email" placeholder="Email" {...register('email')} />
+      <form noValidate onSubmit={handleSubmit} className="mt-[60px] flex flex-col gap-4">
+        <Input
+          type="email"
+          placeholder="Email"
+          error={errors.email?.message}
+          {...register('email')}
+        />
 
-        <Input type="password" placeholder="Senha" {...register('password')} />
+        <Input
+          type="password"
+          placeholder="Senha"
+          error={errors.password?.message}
+          {...register('password')}
+        />
 
         <Button type="submit" className="mt-2">
           Entrar
