@@ -5,7 +5,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 export function Register() {
-  const { handleSubmit, register, errors } = useRegisterController();
+  const { errors, isLoading, handleSubmit, register } = useRegisterController();
 
   return (
     <>
@@ -36,7 +36,7 @@ export function Register() {
           {...register('password')}
         />
 
-        <Button type="submit" className="mt-2">
+        <Button type="submit" className="mt-2" isLoading={isLoading}>
           Criar conta
         </Button>
       </form>
