@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
+import { useAuth } from '../../../app/hooks/useAuth';
 import { authService } from '../../../app/services/authService';
 import { SignInParams } from '../../../app/services/authService/signIn';
 
@@ -28,10 +29,13 @@ export function useLoginController() {
     mutationFn: async (data: SignInParams) => authService.signIn(data),
   });
 
+  const { signIn } = useAuth();
+
   const handleSubmit = hookFormSubmit(async data => {
     try {
       const { accessToken } = await mutateAsync(data);
-      console.log({ accessToken });
+
+      signIn(accessToken);
     } catch {
       toast.error('Email ou senha incorretos!');
     }
