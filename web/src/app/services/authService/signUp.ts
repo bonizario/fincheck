@@ -11,7 +11,7 @@ type SignUpResponse = {
 };
 
 export async function signUp(params: SignUpParams) {
-  const { data } = await httpClient.post<SignUpResponse>('/auth/signUp', params);
+  const { data } = await httpClient.post<SignUpResponse>('/auth/signup', params);
 
   return data;
 }

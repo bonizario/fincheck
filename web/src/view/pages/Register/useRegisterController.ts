@@ -20,7 +20,7 @@ type FormData = z.infer<typeof schema>;
 
 export function useRegisterController() {
   const {
-    handleSubmit: hookFormHandleSubmit,
+    handleSubmit: hookFormSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
@@ -29,7 +29,7 @@ export function useRegisterController() {
     mutationFn: async (data: SignUpParams) => authService.signUp(data),
   });
 
-  const handleSubmit = hookFormHandleSubmit(async data => {
+  const handleSubmit = hookFormSubmit(async data => {
     try {
       const { accessToken } = await mutateAsync(data);
       toast.success('Sucesso ao cadastrar conta!');
