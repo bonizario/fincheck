@@ -31,5 +31,27 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react-hooks/exhaustive-deps': 'warn',
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        groups: ['builtin', 'external'],
+        pathGroups: [
+          {
+            pattern: '@app/**',
+            group: 'internal',
+          },
+          {
+            pattern: '@assets/**',
+            group: 'internal',
+          },
+          {
+            pattern: '@view/**',
+            group: 'internal',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['internal', 'parent', 'sibling', 'index', 'type', 'object'],
+      },
+    ],
   },
 };

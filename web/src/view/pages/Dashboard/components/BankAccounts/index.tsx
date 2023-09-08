@@ -1,10 +1,10 @@
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { EyeIcon } from '@view/components/icons/EyeIcon';
 import { BankAccountCard } from './BankAccountCard';
 import { BankAccountsNavigation } from './BankAccountsNavigation';
 import { useBankAccountsController } from './useBankAccountsController';
-import { EyeIcon } from '../../../../components/icons/EyeIcon';
 
 export function BankAccounts() {
   const { sliderState, setSliderState, windowWidth } = useBankAccountsController();

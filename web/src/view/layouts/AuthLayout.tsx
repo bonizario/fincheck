@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
-import fincheckPreview from '../../assets/fincheck-preview.png';
-import { Logo } from '../components/Logo';
+import fincheckPreview from '@assets/fincheck-preview.png';
+import { Logo } from '@view/components/Logo';
 
 export function AuthLayout() {
   return (
