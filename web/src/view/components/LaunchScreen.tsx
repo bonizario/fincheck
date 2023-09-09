@@ -21,7 +21,7 @@ export function LaunchScreen({ isLoading }: LaunchScreenProps) {
     >
       <div className="fixed grid h-full w-full place-items-center bg-teal-900">
         <div className="flex flex-col items-center justify-center gap-2">
-          <Logo className="h-10 text-white" />
+          <Logo className="mb-2 h-10 text-white" />
           <Spinner className="fill-white text-teal-900" />
         </div>
       </div>

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { EyeIcon } from '@view/components/icons/EyeIcon';
 import { BankAccountCard } from './BankAccountCard';
-import { BankAccountsNavigation } from './BankAccountsNavigation';
+import { SliderNavigation } from './SliderNavigation';
 import { useBankAccountsController } from './useBankAccountsController';
 
 export function BankAccounts() {
@@ -40,10 +40,7 @@ export function BankAccounts() {
                 Minhas Contas
               </strong>
 
-              <BankAccountsNavigation
-                isBeginning={sliderState.isBeginning}
-                isEnd={sliderState.isEnd}
-              />
+              <SliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd} />
             </div>
 
             <SwiperSlide>
