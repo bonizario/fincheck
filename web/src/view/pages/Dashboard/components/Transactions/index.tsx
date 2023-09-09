@@ -2,14 +2,18 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { MONTHS } from '@app/config/constants';
+import { cn } from '@app/utils/cn';
 import { formatCurrency } from '@app/utils/formatCurrency';
 import { FilterIcon } from '@view/components/icons/FilterIcon';
 import { TransactionsIcon } from '@view/components/icons/TransactionsIcon';
 import { CategoryIcon } from '@view/components/icons/categories/CategoryIcon';
 import { SliderNavigation } from './SliderNavigation';
 import { SliderOption } from './SliderOption';
+import { useTransactionsController } from './useTransactionsController';
 
 export function Transactions() {
+  const { areValuesVisible } = useTransactionsController();
+
   return (
     <div className="flex h-full w-full flex-col rounded-2xl bg-gray-100 px-4 py-8 md:p-10">
       <header>
@@ -49,7 +53,14 @@ export function Transactions() {
             </div>
           </div>
 
-          <span className="font-medium tracking-[-0.5px] text-red-800">-{formatCurrency(340)}</span>
+          <span
+            className={cn(
+              'font-medium tracking-[-0.5px] text-red-800',
+              !areValuesVisible && 'blur-[6px]'
+            )}
+          >
+            -{formatCurrency(340)}
+          </span>
         </div>
 
         <div className="flex items-center justify-between gap-4 rounded-2xl bg-white p-4">
@@ -62,7 +73,12 @@ export function Transactions() {
             </div>
           </div>
 
-          <span className="font-medium tracking-[-0.5px] text-green-800">
+          <span
+            className={cn(
+              'font-medium tracking-[-0.5px] text-green-800',
+              !areValuesVisible && 'blur-[6px]'
+            )}
+          >
             +{formatCurrency(4000)}
           </span>
         </div>

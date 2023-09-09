@@ -1,6 +1,7 @@
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { cn } from '@app/utils/cn';
 import { formatCurrency } from '@app/utils/formatCurrency';
 import { EyeIcon } from '@view/components/icons/EyeIcon';
 import { BankAccountCard } from './BankAccountCard';
@@ -8,7 +9,8 @@ import { SliderNavigation } from './SliderNavigation';
 import { useBankAccountsController } from './useBankAccountsController';
 
 export function BankAccounts() {
-  const { sliderState, setSliderState, windowWidth } = useBankAccountsController();
+  const { areValuesVisible, sliderState, setSliderState, windowWidth, toggleValueVisibility } =
+    useBankAccountsController();
 
   const slidesPerView =
     (windowWidth >= 768 && windowWidth <= 1280) || windowWidth <= 500 ? 1.1 : 2.1;
@@ -19,12 +21,20 @@ export function BankAccounts() {
         <span className="mb-2 block tracking-[-0.5px] text-white">Saldo total</span>
 
         <div className="flex items-center gap-2">
-          <strong className="text-[32px] font-bold tracking-[-1px] text-white">
+          <strong
+            className={cn(
+              'text-[32px] font-bold tracking-[-1px] text-white',
+              !areValuesVisible && 'blur-md'
+            )}
+          >
             {formatCurrency(100)}
           </strong>
 
-          <button className="flex h-12 w-12 items-center justify-center">
-            <EyeIcon open />
+          <button
+            onClick={toggleValueVisibility}
+            className="flex h-12 w-12 items-center justify-center"
+          >
+            <EyeIcon open={!areValuesVisible} />
           </button>
         </div>
       </div>
