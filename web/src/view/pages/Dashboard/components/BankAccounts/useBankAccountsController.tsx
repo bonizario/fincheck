@@ -12,9 +12,11 @@ export function useBankAccountsController() {
 
   return {
     areValuesVisible,
-    sliderState,
+    bankAccounts: [],
+    isLoading: false,
     setSliderState,
-    windowWidth,
+    sliderState,
     toggleValueVisibility,
+    windowWidth,
   };
 }
