@@ -2,10 +2,9 @@ import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import { cn } from '@app/utils/cn';
 
-type DropdownMenuItemProps = {
+type DropdownMenuTriggerProps = {
   children: React.ReactNode;
   className?: string;
-  onSelect?: () => void;
 };
 
 type DropdownMenuContentProps = {
@@ -13,13 +12,21 @@ type DropdownMenuContentProps = {
   className?: string;
 };
 
+type DropdownMenuItemProps = {
+  children: React.ReactNode;
+  className?: string;
+  onSelect?: () => void;
+};
+
 export function DropdownMenuRoot({ children }: { children: React.ReactNode }) {
   return <RadixDropdownMenu.Root>{children}</RadixDropdownMenu.Root>;
 }
 
-export function DropdownMenuTrigger({ children }: { children: React.ReactNode }) {
+export function DropdownMenuTrigger({ children, className }: DropdownMenuTriggerProps) {
   return (
-    <RadixDropdownMenu.Trigger className="rounded-full focus:outline-dashed focus:outline-1 focus:outline-teal-900">
+    <RadixDropdownMenu.Trigger
+      className={cn('select-none rounded-full focus:outline-none', className)}
+    >
       {children}
     </RadixDropdownMenu.Trigger>
   );
@@ -30,7 +37,7 @@ export function DropdownMenuContent({ children, className }: DropdownMenuContent
     <RadixDropdownMenu.Portal>
       <RadixDropdownMenu.Content
         className={cn(
-          'cursor-pointer select-none space-y-2 rounded-2xl bg-white p-2 shadow-[0_11px_20px_0_rgba(0,0,0,0.10)] data-[side=bottom]:animate-slide-up-and-fade',
+          'z-20 cursor-pointer select-none space-y-2 rounded-2xl bg-white p-2 shadow-[0_11px_20px_0_rgba(0,0,0,0.10)] data-[side=bottom]:animate-slide-up-and-fade',
           className
         )}
       >
@@ -45,7 +52,7 @@ export function DropdownMenuItem({ children, className, onSelect }: DropdownMenu
     <RadixDropdownMenu.Item
       onSelect={onSelect}
       className={cn(
-        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl px-4 py-2 text-sm text-gray-800 outline-none transition-colors data-[highlighted]:bg-gray-50',
+        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl px-4 py-2 text-sm text-gray-800 transition-colors focus:outline-none data-[highlighted]:bg-gray-50',
         className
       )}
     >

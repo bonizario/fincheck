@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { MONTHS } from '@app/config/constants';
@@ -7,10 +6,10 @@ import { formatCurrency } from '@app/utils/formatCurrency';
 import emptyState from '@assets/empty-state.svg';
 import { Spinner } from '@view/components/Spinner';
 import { FilterIcon } from '@view/components/icons/FilterIcon';
-import { TransactionsIcon } from '@view/components/icons/TransactionsIcon';
 import { CategoryIcon } from '@view/components/icons/categories/CategoryIcon';
 import { SliderNavigation } from './SliderNavigation';
 import { SliderOption } from './SliderOption';
+import { TransactionTypeDropdown } from './TransactionTypeDropdown';
 import { useTransactionsController } from './useTransactionsController';
 
 export function Transactions() {
@@ -31,13 +30,8 @@ export function Transactions() {
         <>
           <header>
             <div className="flex justify-between">
-              <button className="flex items-center gap-2">
-                <TransactionsIcon />
-                <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">
-                  Transações
-                </span>
-                <ChevronDownIcon width={24} height={24} className="text-gray-900" />
-              </button>
+              <TransactionTypeDropdown />
+
               <button className="flex items-center gap-2">
                 <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Filtrar</span>
                 <FilterIcon />
@@ -48,7 +42,7 @@ export function Transactions() {
                 <SliderNavigation />
 
                 {MONTHS.map((month, index) => (
-                  <SwiperSlide key={month} className="p-2">
+                  <SwiperSlide key={month} className="z-0 p-2">
                     {({ isActive }) => (
                       <SliderOption isActive={isActive} month={month} index={index} />
                     )}
