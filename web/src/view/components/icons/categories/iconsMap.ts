@@ -1,27 +1,27 @@
-import { Clothes } from './expense/Clothes';
-import { Education } from './expense/Education';
-import { Expense } from './expense/Expense';
-import { Food } from './expense/Food';
-import { Fun } from './expense/Fun';
-import { Grocery } from './expense/Grocery';
-import { Home } from './expense/Home';
-import { Transport } from './expense/Transport';
-import { Travel } from './expense/Travel';
-import { Income } from './income/Income';
+import { ClothesIcon } from './expense/ClothesIcon';
+import { DefaultExpenseIcon } from './expense/DefaultExpenseIcon';
+import { EducationIcon } from './expense/EducationIcon';
+import { FoodIcon } from './expense/FoodIcon';
+import { FunIcon } from './expense/FunIcon';
+import { GroceryIcon } from './expense/GroceryIcon';
+import { HomeIcon } from './expense/HomeIcon';
+import { TransportIcon } from './expense/TransportIcon';
+import { TravelIcon } from './expense/TravelIcon';
+import { DefaultIncomeIcon } from './income/DefaultIncomeIcon';
 
 export const iconsMap = {
   income: {
-    default: Income,
+    default: DefaultIncomeIcon,
   },
   expense: {
-    default: Expense,
-    food: Food,
-    fun: Fun,
-    grocery: Grocery,
-    home: Home,
-    education: Education,
-    clothes: Clothes,
-    transport: Transport,
-    travel: Travel,
+    default: DefaultExpenseIcon,
+    food: FoodIcon,
+    fun: FunIcon,
+    grocery: GroceryIcon,
+    home: HomeIcon,
+    education: EducationIcon,
+    clothes: ClothesIcon,
+    transport: TransportIcon,
+    travel: TravelIcon,
   },
 };

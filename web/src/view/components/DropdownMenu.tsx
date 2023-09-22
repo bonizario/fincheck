@@ -10,7 +10,9 @@ type DropdownMenuTriggerProps = {
 type DropdownMenuContentProps = {
   children: React.ReactNode;
   className?: string;
+  align?: RadixDropdownMenu.DropdownMenuContentProps['align'];
   side?: RadixDropdownMenu.DropdownMenuContentProps['side'];
+  sideOffset?: RadixDropdownMenu.DropdownMenuContentProps['sideOffset'];
 };
 
 type DropdownMenuItemProps = {
@@ -26,7 +28,10 @@ export function DropdownMenuRoot({ children }: { children: React.ReactNode }) {
 export function DropdownMenuTrigger({ children, className }: DropdownMenuTriggerProps) {
   return (
     <RadixDropdownMenu.Trigger
-      className={cn('select-none rounded-full focus:outline-none', className)}
+      className={cn(
+        'flex h-12 select-none items-center justify-center rounded-full focus:outline-none',
+        className
+      )}
     >
       {children}
     </RadixDropdownMenu.Trigger>
@@ -36,13 +41,16 @@ export function DropdownMenuTrigger({ children, className }: DropdownMenuTrigger
 export function DropdownMenuContent({
   children,
   className,
+  align = 'start',
   side = 'bottom',
+  sideOffset = 8,
 }: DropdownMenuContentProps) {
   return (
     <RadixDropdownMenu.Portal>
       <RadixDropdownMenu.Content
-        sideOffset={8}
+        align={align}
         side={side}
+        sideOffset={sideOffset}
         className={cn(
           'z-20 cursor-pointer select-none space-y-2 rounded-2xl bg-white p-2 shadow-[0_11px_20px_0_rgba(0,0,0,0.10)]',
           'data-[side=bottom]:animate-slide-up-and-fade',
@@ -61,7 +69,7 @@ export function DropdownMenuItem({ children, className, onSelect }: DropdownMenu
     <RadixDropdownMenu.Item
       onSelect={onSelect}
       className={cn(
-        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl px-4 py-2 text-sm text-gray-800 transition-colors focus:outline-none data-[highlighted]:bg-gray-50',
+        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl p-2 text-sm text-gray-800 transition-colors focus:outline-none data-[highlighted]:bg-gray-50',
         className
       )}
     >

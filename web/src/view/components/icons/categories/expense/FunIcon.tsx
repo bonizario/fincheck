@@ -1,4 +1,4 @@
-export function Fun() {
+export function FunIcon() {
   return (
     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="1" y="1" width="42" height="42" rx="21" fill="#F3F0FF" />

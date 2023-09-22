@@ -2,13 +2,13 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 import { DropdownMenu } from '@view/components/DropdownMenu';
 import { ExpensesIcon } from '@view/components/icons/ExpensesIcon';
-import { IncomeIcon } from '@view/components/icons/IncomeIcon';
+import { IncomesIcon } from '@view/components/icons/IncomesIcon';
 import { TransactionsIcon } from '@view/components/icons/TransactionsIcon';
 
 export function TransactionTypeDropdown() {
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="flex h-12 items-center gap-2">
+      <DropdownMenu.Trigger className="gap-2">
         <TransactionsIcon />
 
         <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Transações</span>
@@ -18,7 +18,7 @@ export function TransactionTypeDropdown() {
 
       <DropdownMenu.Content className="w-[17.5rem]">
         <DropdownMenu.Item className="gap-2">
-          <IncomeIcon />
+          <IncomesIcon />
           Receitas
         </DropdownMenu.Item>
 

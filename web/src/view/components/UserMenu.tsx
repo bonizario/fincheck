@@ -8,12 +8,11 @@ export function UserMenu() {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <div className="flex h-12 w-12 cursor-pointer select-none items-center justify-center rounded-full border border-teal-100 bg-teal-0">
-          <span className="text-sm font-medium tracking-[-0.5px] text-teal-900">GB</span>
-        </div>
+      <DropdownMenu.Trigger className="w-12 border border-teal-100 bg-teal-0">
+        <span className="text-sm font-medium tracking-[-0.5px] text-teal-900">GB</span>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content className="w-28">
+
+      <DropdownMenu.Content className="w-28" align="end" sideOffset={16}>
         <DropdownMenu.Item onSelect={signOut} className="flex items-center justify-between">
           Sair
           <ExitIcon className="h-4 w-4" />
