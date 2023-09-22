@@ -8,7 +8,7 @@ import { TransactionsIcon } from '@view/components/icons/TransactionsIcon';
 export function TransactionTypeDropdown() {
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="flex items-center gap-2">
+      <DropdownMenu.Trigger className="flex h-12 items-center gap-2">
         <TransactionsIcon />
 
         <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Transações</span>

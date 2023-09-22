@@ -19,7 +19,7 @@ export function Transactions() {
   const hasTransactions = transactions.length > 0;
 
   return (
-    <div className="mb-4 flex h-full w-full flex-col rounded-2xl bg-gray-100 px-4 py-8 md:mb-0 md:p-10">
+    <div className="flex h-full w-full flex-col rounded-2xl bg-gray-100 px-4 pb-24 pt-6 md:p-10">
       {isInitialLoading && (
         <div className="flex h-full w-full items-center justify-center">
           <Spinner className="h-9 w-9" />

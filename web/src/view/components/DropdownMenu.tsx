@@ -10,6 +10,7 @@ type DropdownMenuTriggerProps = {
 type DropdownMenuContentProps = {
   children: React.ReactNode;
   className?: string;
+  side?: RadixDropdownMenu.DropdownMenuContentProps['side'];
 };
 
 type DropdownMenuItemProps = {
@@ -32,12 +33,20 @@ export function DropdownMenuTrigger({ children, className }: DropdownMenuTrigger
   );
 }
 
-export function DropdownMenuContent({ children, className }: DropdownMenuContentProps) {
+export function DropdownMenuContent({
+  children,
+  className,
+  side = 'bottom',
+}: DropdownMenuContentProps) {
   return (
     <RadixDropdownMenu.Portal>
       <RadixDropdownMenu.Content
+        sideOffset={8}
+        side={side}
         className={cn(
-          'z-20 cursor-pointer select-none space-y-2 rounded-2xl bg-white p-2 shadow-[0_11px_20px_0_rgba(0,0,0,0.10)] data-[side=bottom]:animate-slide-up-and-fade',
+          'z-20 cursor-pointer select-none space-y-2 rounded-2xl bg-white p-2 shadow-[0_11px_20px_0_rgba(0,0,0,0.10)]',
+          'data-[side=bottom]:animate-slide-up-and-fade',
+          'data-[side=top]:animate-slide-down-and-fade',
           className
         )}
       >
