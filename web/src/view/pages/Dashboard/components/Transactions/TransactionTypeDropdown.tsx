@@ -12,7 +12,7 @@ export function TransactionTypeDropdown() {
         <button>
           <TransactionsIcon />
 
-          <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Transações</span>
+          <span className="text-button-sm text-gray-800">Transações</span>
 
           <ChevronDownIcon width={24} height={24} className="text-gray-900" />
         </button>

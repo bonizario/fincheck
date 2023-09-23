@@ -43,10 +43,11 @@ export function Transactions() {
               <TransactionTypeDropdown />
 
               <button onClick={handleOpenFiltersModal} className="flex items-center gap-2">
-                <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Filtros</span>
+                <span className="text-button-sm text-gray-800">Filtros</span>
                 <FilterIcon />
               </button>
             </div>
+
             <div className="relative mt-6">
               <Swiper slidesPerView={3} centeredSlides>
                 <SliderNavigation />
@@ -72,7 +73,9 @@ export function Transactions() {
             {!hasTransactions && !isLoading && (
               <div className="flex h-full flex-col items-center justify-center space-y-4">
                 <img src={emptyState} alt="Empty state" className="h-40 w-40" />
-                <p className="text-center text-gray-700">Não encontramos nenhuma transação!</p>
+                <p className="text-center text-base-normal text-gray-700">
+                  Não encontramos nenhuma transação!
+                </p>
               </div>
             )}
 
@@ -82,16 +85,14 @@ export function Transactions() {
                   <div className="flex flex-1 items-center gap-3">
                     <CategoryIcon type="expense" category="food" />
                     <div>
-                      <strong className="block font-bold tracking-[-0.5px] text-gray-800">
-                        Almoço
-                      </strong>
-                      <span className="text-sm text-gray-600">09/08/2023</span>
+                      <strong className="block text-base-bold text-gray-800">Almoço</strong>
+                      <span className="text-sm-normal text-gray-600">09/08/2023</span>
                     </div>
                   </div>
                   <span
                     className={cn(
-                      'font-medium tracking-[-0.5px] text-red-800',
-                      !areValuesVisible && 'blur-[6px]'
+                      'text-base-medium text-red-800',
+                      !areValuesVisible && 'blur-[0.375rem]'
                     )}
                   >
                     -{formatCurrency(340)}
@@ -101,16 +102,14 @@ export function Transactions() {
                   <div className="flex flex-1 items-center gap-3">
                     <CategoryIcon type="income" />
                     <div>
-                      <strong className="block font-bold tracking-[-0.5px] text-gray-800">
-                        Salário
-                      </strong>
-                      <span className="text-sm text-gray-600">09/08/2023</span>
+                      <strong className="block text-base-bold text-gray-800">Salário</strong>
+                      <span className="text-sm-normal text-gray-600">09/08/2023</span>
                     </div>
                   </div>
                   <span
                     className={cn(
-                      'font-medium tracking-[-0.5px] text-green-800',
-                      !areValuesVisible && 'blur-[6px]'
+                      'text-base-medium text-green-800',
+                      !areValuesVisible && 'blur-[0.375rem]'
                     )}
                   >
                     +{formatCurrency(4000)}

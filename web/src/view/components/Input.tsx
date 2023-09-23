@@ -21,14 +21,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           placeholder=" "
           className={cn(
-            'peer h-[52px] w-full rounded-lg border border-gray-500 bg-white px-3 pt-4 text-gray-800 placeholder-shown:pt-0 focus:border-transparent focus:pt-4 focus:outline focus:outline-2 focus:outline-teal-900',
-            error && 'border-red-900 focus:outline-red-900',
+            'peer h-[3.25rem] w-full rounded-lg border border-gray-500 bg-white px-3 pt-4 text-gray-800',
+            'placeholder-shown:pt-0 focus-visible:border-transparent focus-visible:pt-4',
+            error &&
+              'border-red-900 focus-visible:border-transparent focus-visible:outline-red-900',
             className
           )}
         />
         <label
           htmlFor={inputId}
-          className="pointer-events-none absolute left-[13px] top-2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs"
+          className={`
+            pointer-events-none absolute left-[0.8125rem] top-[0.5625rem] text-input-label text-gray-700
+            transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base-normal
+            peer-focus:top-[0.5625rem] peer-focus:text-input-label`}
         >
           {placeholder}
         </label>
@@ -36,7 +41,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {error && (
           <div className="mt-2 flex items-center gap-2 text-red-900">
             <CrossCircledIcon />
-            <span className="text-xs">{error}</span>
+            <span className="text-input-helper">{error}</span>
           </div>
         )}
       </div>

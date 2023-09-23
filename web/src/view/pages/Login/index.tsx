@@ -10,16 +10,16 @@ export function Login() {
   return (
     <>
       <header className="flex flex-col items-center gap-4 text-center">
-        <h1 className="text-2xl font-bold tracking-[-1px] text-gray-900">Entre em sua conta</h1>
+        <h1 className="text-h2 text-gray-900">Entre em sua conta</h1>
         <p className="space-x-2">
-          <span className="tracking-[-0.5px] text-gray-700">Novo por aqui?</span>
-          <Link to="/register" className="font-medium tracking-[-0.5px] text-teal-900">
+          <span className="text-base-normal text-gray-700">Novo por aqui?</span>
+          <Link to="/register" className="text-button-lg text-teal-900">
             Crie uma conta
           </Link>
         </p>
       </header>
 
-      <form noValidate onSubmit={handleSubmit} className="mt-[60px] flex flex-col gap-4">
+      <form noValidate onSubmit={handleSubmit} className="mb-[4.25rem] mt-12 flex flex-col gap-4">
         <Input
           type="email"
           placeholder="Email"

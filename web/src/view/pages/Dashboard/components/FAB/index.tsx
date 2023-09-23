@@ -7,10 +7,14 @@ import { ColoredIncomeIcon } from '@view/components/icons/ColoredIncomeIcon';
 
 export function FAB() {
   return (
-    <div className="fixed bottom-4 right-4 ">
+    <div className="fixed bottom-4 right-4">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <button className="w-12 rounded-full bg-teal-900 text-white transition-all duration-150 data-[state=open]:rotate-45">
+          <button
+            className={`
+              w-12 rounded-full bg-teal-900 text-white transition-all
+            focus-visible:outline-white data-[state=open]:rotate-45`}
+          >
             <PlusIcon className="h-6 w-6" />
           </button>
         </DropdownMenu.Trigger>

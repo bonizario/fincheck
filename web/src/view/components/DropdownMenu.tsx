@@ -68,7 +68,7 @@ export function DropdownMenuItem({ children, className, onSelect }: DropdownMenu
     <RadixDropdownMenu.Item
       onSelect={onSelect}
       className={cn(
-        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl p-2 text-sm text-gray-800 transition-colors hover:outline-none data-[highlighted]:bg-gray-50',
+        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl p-2 text-sm-normal text-gray-800 transition-colors hover:outline-none data-[highlighted]:bg-gray-100',
         className
       )}
     >

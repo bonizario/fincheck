@@ -15,24 +15,24 @@ export function BankAccountCard({ color, name, balance, type }: BankAccountCardP
 
   return (
     <div
-      className="flex h-[200px] flex-col justify-between rounded-2xl border-b-4 border-teal-950 bg-white p-4"
+      className="flex h-[12.5rem] flex-col justify-between rounded-2xl border-b-4 border-teal-950 bg-white p-4"
       style={{ borderColor: color }}
     >
       <div>
         <BankAccountIcon type={type} />
-        <span className="mt-4 block font-medium tracking-[-0.5px] text-gray-800">{name}</span>
+        <span className="mt-4 block text-base-medium text-gray-800">{name}</span>
       </div>
 
       <div>
         <span
           className={cn(
-            'block font-medium tracking-[-0.5px] text-gray-800',
-            !areValuesVisible && 'blur-[6px]'
+            'block text-base-medium text-gray-800',
+            !areValuesVisible && 'blur-[0.375rem]'
           )}
         >
           {formatCurrency(balance)}
         </span>
-        <small className="text-sm text-gray-600">Saldo atual</small>
+        <small className="text-sm-normal text-gray-600">Saldo atual</small>
       </div>
     </div>
   );

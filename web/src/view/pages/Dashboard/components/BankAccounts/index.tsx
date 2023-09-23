@@ -35,21 +35,16 @@ export function BankAccounts() {
       {!isLoading && (
         <>
           <div>
-            <span className="mb-2 block tracking-[-0.5px] text-white">Saldo total</span>
+            <span className="mb-2 block text-base-normal text-white">Saldo total</span>
 
             <div className="flex items-center gap-2">
-              <strong
-                className={cn(
-                  'text-[32px] font-bold tracking-[-1px] text-white',
-                  !areValuesVisible && 'blur-md'
-                )}
-              >
+              <strong className={cn('text-h1 text-white', !areValuesVisible && 'blur-md')}>
                 {formatCurrency(100)}
               </strong>
 
               <button
                 onClick={toggleValueVisibility}
-                className="flex h-12 w-12 items-center justify-center"
+                className="flex h-12 w-12 items-center justify-center focus-visible:outline-white"
               >
                 <EyeIcon open={!areValuesVisible} />
               </button>
@@ -60,16 +55,18 @@ export function BankAccounts() {
             {bankAccounts.length === 0 && (
               <>
                 <div slot="container-start" className="mb-4">
-                  <strong className="text-lg font-bold tracking-[-1px] text-white">
-                    Minhas Contas
-                  </strong>
+                  <strong className="text-h4 text-white">Minhas Contas</strong>
                 </div>
 
-                <button className="mt-4 flex h-52 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed border-teal-600 text-white">
+                <button
+                  className={`
+                    mt-4 flex h-52 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed
+                    border-teal-600 text-white focus-visible:border-transparent focus-visible:outline-white`}
+                >
                   <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-dashed border-white">
                     <PlusIcon className="h-6 w-6" />
                   </div>
-                  <span className="block w-32 text-center font-medium tracking-[-0.5px]">
+                  <span className="block w-32 text-center text-base-medium">
                     Cadastre uma nova conta
                   </span>
                 </button>
@@ -85,10 +82,11 @@ export function BankAccounts() {
                     setSliderState({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd });
                   }}
                 >
-                  <div slot="container-start" className="mb-4 flex items-center justify-between">
-                    <strong className="text-lg font-bold tracking-[-1px] text-white">
-                      Minhas Contas
-                    </strong>
+                  <div
+                    slot="container-start"
+                    className="mb-4 flex items-center justify-between pr-0.5 pt-0.5"
+                  >
+                    <strong className="text-h4 text-white">Minhas Contas</strong>
 
                     <SliderNavigation
                       isBeginning={sliderState.isBeginning}

@@ -22,15 +22,15 @@ export function FiltersModal({ onClose, open }: FiltersModalProps) {
 
   return (
     <Modal open={open} onClose={onClose} title="Filtros">
-      <section className="flex flex-col gap-2 text-gray-800">
-        <strong className="block text-lg font-bold tracking-[-1px]">Conta</strong>
+      <section className="flex flex-col gap-2">
+        <strong className="block text-h4">Conta</strong>
 
         {mockedBankAccounts.map(bankAccount => (
           <button
             onClick={() => handleSelectBankAccount(bankAccount.id)}
             key={bankAccount.id}
             className={cn(
-              'w-full rounded-2xl p-2 text-left text-sm leading-normal transition-colors hover:bg-gray-50',
+              'w-full rounded-2xl p-2 text-left text-sm-normal transition-colors hover:bg-gray-100/75',
               bankAccount.id === selectedBankAccountId && '!bg-gray-200'
             )}
           >
@@ -39,10 +39,10 @@ export function FiltersModal({ onClose, open }: FiltersModalProps) {
         ))}
       </section>
 
-      <section className="flex flex-col gap-2 text-gray-800">
-        <strong className="block text-lg font-bold tracking-[-1px]">Ano</strong>
+      <section className="flex flex-col gap-2">
+        <strong className="block text-h4">Ano</strong>
 
-        <div className="flex w-[13.125rem] items-center justify-between">
+        <div className="flex w-[13.125rem] items-center justify-between self-center">
           <button
             onClick={() => handleChangeYear(-1)}
             className="flex h-12 w-12 items-center justify-center"
@@ -50,9 +50,7 @@ export function FiltersModal({ onClose, open }: FiltersModalProps) {
             <ChevronLeftIcon className="h-6 w-6" />
           </button>
 
-          <span className="flex-1 text-center text-sm font-medium leading-snug tracking-[-0.5px]">
-            {selectedYear}
-          </span>
+          <span className="flex-1 text-center text-button-sm">{selectedYear}</span>
 
           <button
             onClick={() => handleChangeYear(1)}
