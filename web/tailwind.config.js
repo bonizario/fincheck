@@ -163,11 +163,11 @@ export default {
       },
       keyframes: {
         slideDownAndFade: {
-          from: { opacity: 0, transform: 'translateY(-2px)' },
+          from: { opacity: 0, transform: 'translateY(-0.125rem)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
         slideUpAndFade: {
-          from: { opacity: 0, transform: 'translateY(2px)' },
+          from: { opacity: 0, transform: 'translateY(0.125rem)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
         overlayShow: {
@@ -198,6 +198,152 @@ export default {
           'Arial',
           'Noto Sans',
           'sans-serif',
+        ],
+      },
+      fontSize: {
+        'sm-normal': [
+          '0.875rem',
+          {
+            lineHeight: '1.3125rem',
+            letterSpacing: '0',
+            fontWeight: 400,
+          },
+        ],
+        'sm-medium': [
+          '0.875rem',
+          {
+            lineHeight: '1.3125rem',
+            letterSpacing: '0',
+            fontWeight: 500,
+          },
+        ],
+        'sm-bold': [
+          '0.875rem',
+          {
+            lineHeight: '1.3125rem',
+            letterSpacing: '0',
+            fontWeight: 700,
+          },
+        ],
+        'base-normal': [
+          '1rem',
+          {
+            lineHeight: '1.5rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 400,
+          },
+        ],
+        'base-medium': [
+          '1rem',
+          {
+            lineHeight: '1.5rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 500,
+          },
+        ],
+        'base-bold': [
+          '1rem',
+          {
+            lineHeight: '1.5rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 700,
+          },
+        ],
+        'lg-normal': [
+          '1.125rem',
+          {
+            lineHeight: '1.6875rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 400,
+          },
+        ],
+        'lg-medium': [
+          '1.125rem',
+          {
+            lineHeight: '1.6875rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 500,
+          },
+        ],
+        'lg-bold': [
+          '1.125rem',
+          {
+            lineHeight: '1.6875rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 700,
+          },
+        ],
+        h1: [
+          '2rem',
+          {
+            lineHeight: '2rem',
+            letterSpacing: '-0.0625rem',
+            fontWeight: 700,
+          },
+        ],
+        h2: [
+          '1.5rem',
+          {
+            lineHeight: '1.9375rem',
+            letterSpacing: '-0.0625rem',
+            fontWeight: 700,
+          },
+        ],
+        h3: [
+          '1.25rem',
+          {
+            lineHeight: '1.625rem',
+            letterSpacing: '-0.0625rem',
+            fontWeight: 700,
+          },
+        ],
+        h4: [
+          '1.125rem',
+          {
+            lineHeight: '1.4375rem',
+            letterSpacing: '-0.0625rem',
+            fontWeight: 700,
+          },
+        ],
+        'input-label': [
+          '0.75rem',
+          {
+            lineHeight: '0.75rem',
+            letterSpacing: '0',
+            fontWeight: 400,
+          },
+        ],
+        'input-placeholder': [
+          '0.875rem',
+          {
+            lineHeight: '1.25rem',
+            letterSpacing: '0',
+            fontWeight: 400,
+          },
+        ],
+        'input-helper': [
+          '0.75rem',
+          {
+            lineHeight: '1.0625rem',
+            letterSpacing: '0',
+            fontWeight: 400,
+          },
+        ],
+        'button-lg': [
+          '1rem',
+          {
+            lineHeight: '1.375rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 500,
+          },
+        ],
+        'button-sm': [
+          '0.875rem',
+          {
+            lineHeight: '1.25rem',
+            letterSpacing: '-0.03125rem',
+            fontWeight: 500,
+          },
         ],
       },
     },
