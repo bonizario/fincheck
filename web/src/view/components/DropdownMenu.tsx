@@ -28,10 +28,8 @@ export function DropdownMenuRoot({ children }: { children: React.ReactNode }) {
 export function DropdownMenuTrigger({ children, className }: DropdownMenuTriggerProps) {
   return (
     <RadixDropdownMenu.Trigger
-      className={cn(
-        'flex h-12 select-none items-center justify-center rounded-full focus:outline-none',
-        className
-      )}
+      asChild
+      className={cn('flex h-12 select-none items-center justify-center', className)}
     >
       {children}
     </RadixDropdownMenu.Trigger>
@@ -49,6 +47,7 @@ export function DropdownMenuContent({
     <RadixDropdownMenu.Portal>
       <RadixDropdownMenu.Content
         align={align}
+        onCloseAutoFocus={event => event.preventDefault()}
         side={side}
         sideOffset={sideOffset}
         className={cn(
@@ -69,7 +68,7 @@ export function DropdownMenuItem({ children, className, onSelect }: DropdownMenu
     <RadixDropdownMenu.Item
       onSelect={onSelect}
       className={cn(
-        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl p-2 text-sm text-gray-800 transition-colors focus:outline-none data-[highlighted]:bg-gray-50',
+        'flex min-h-[3rem] cursor-pointer select-none items-center rounded-xl p-2 text-sm text-gray-800 transition-colors hover:outline-none data-[highlighted]:bg-gray-50',
         className
       )}
     >

@@ -9,11 +9,13 @@ export function TransactionTypeDropdown() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="gap-2">
-        <TransactionsIcon />
+        <button>
+          <TransactionsIcon />
 
-        <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Transações</span>
+          <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Transações</span>
 
-        <ChevronDownIcon width={24} height={24} className="text-gray-900" />
+          <ChevronDownIcon width={24} height={24} className="text-gray-900" />
+        </button>
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Content className="w-[17.5rem]">

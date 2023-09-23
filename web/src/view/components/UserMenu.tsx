@@ -8,8 +8,10 @@ export function UserMenu() {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="w-12 border border-teal-100 bg-teal-0">
-        <span className="text-sm font-medium tracking-[-0.5px] text-teal-900">GB</span>
+      <DropdownMenu.Trigger>
+        <button className="w-12 rounded-full border border-teal-100 bg-teal-0">
+          <span className="text-sm font-medium tracking-[-0.5px] text-teal-900">GB</span>
+        </button>
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Content className="w-28" align="end" sideOffset={16}>

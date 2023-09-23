@@ -7,14 +7,22 @@ import emptyState from '@assets/empty-state.svg';
 import { Spinner } from '@view/components/Spinner';
 import { FilterIcon } from '@view/components/icons/FilterIcon';
 import { CategoryIcon } from '@view/components/icons/categories/CategoryIcon';
+import { FiltersModal } from './FiltersModal';
 import { SliderNavigation } from './SliderNavigation';
 import { SliderOption } from './SliderOption';
 import { TransactionTypeDropdown } from './TransactionTypeDropdown';
 import { useTransactionsController } from './useTransactionsController';
 
 export function Transactions() {
-  const { areValuesVisible, isInitialLoading, isLoading, transactions } =
-    useTransactionsController();
+  const {
+    areValuesVisible,
+    handleCloseFiltersModal,
+    handleOpenFiltersModal,
+    isFiltersModalOpen,
+    isInitialLoading,
+    isLoading,
+    transactions,
+  } = useTransactionsController();
 
   const hasTransactions = transactions.length > 0;
 
@@ -28,12 +36,14 @@ export function Transactions() {
 
       {!isInitialLoading && (
         <>
+          <FiltersModal open={isFiltersModalOpen} onClose={handleCloseFiltersModal} />
+
           <header>
             <div className="flex justify-between">
               <TransactionTypeDropdown />
 
-              <button className="flex items-center gap-2">
-                <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Filtrar</span>
+              <button onClick={handleOpenFiltersModal} className="flex items-center gap-2">
+                <span className="text-sm font-medium tracking-[-0.5px] text-gray-800">Filtros</span>
                 <FilterIcon />
               </button>
             </div>
@@ -42,7 +52,7 @@ export function Transactions() {
                 <SliderNavigation />
 
                 {MONTHS.map((month, index) => (
-                  <SwiperSlide key={month} className="z-0 p-2">
+                  <SwiperSlide key={month} className="p-2">
                     {({ isActive }) => (
                       <SliderOption isActive={isActive} month={month} index={index} />
                     )}

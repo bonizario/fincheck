@@ -9,8 +9,10 @@ export function FAB() {
   return (
     <div className="fixed bottom-4 right-4 ">
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger className="w-12 rounded-full bg-teal-900 text-white transition-all duration-150 data-[state=open]:rotate-45">
-          <PlusIcon className="h-6 w-6" />
+        <DropdownMenu.Trigger>
+          <button className="w-12 rounded-full bg-teal-900 text-white transition-all duration-150 data-[state=open]:rotate-45">
+            <PlusIcon className="h-6 w-6" />
+          </button>
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content side="top" align="end" sideOffset={16}>
