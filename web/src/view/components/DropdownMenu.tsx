@@ -29,7 +29,7 @@ export function DropdownMenuTrigger({ children, className }: DropdownMenuTrigger
   return (
     <RadixDropdownMenu.Trigger
       asChild
-      className={cn('flex h-12 select-none items-center justify-center', className)}
+      className={cn('flex h-12 select-none items-center', className)}
     >
       {children}
     </RadixDropdownMenu.Trigger>

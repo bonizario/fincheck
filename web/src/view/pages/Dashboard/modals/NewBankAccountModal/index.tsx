@@ -1,3 +1,5 @@
+import { Button } from '@view/components/Button';
+import { ColorsDropdownInput } from '@view/components/ColorsDropdownInput';
 import { Input } from '@view/components/Input';
 import { InputCurrency } from '@view/components/InputCurrency';
 import { Modal } from '@view/components/Modal';
@@ -23,6 +25,7 @@ export function NewBankAccountModal() {
 
         <fieldset className="space-y-4">
           <Input name="name" type="text" placeholder="Nome da Conta" error="" />
+
           <Select
             placeholder="Tipo"
             options={[
@@ -40,8 +43,11 @@ export function NewBankAccountModal() {
               },
             ]}
           />
-          <Input name="color" type="text" placeholder="Cor" error="" />
+
+          <ColorsDropdownInput />
         </fieldset>
+
+        <Button className="w-full">Salvar</Button>
       </form>
     </Modal>
   );

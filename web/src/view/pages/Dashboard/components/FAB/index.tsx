@@ -15,7 +15,7 @@ export function FAB() {
         <DropdownMenu.Trigger>
           <button
             className={`
-              w-12 rounded-full bg-teal-900 text-white transition-all
+              w-12 justify-center rounded-full bg-teal-900 text-white transition-all
             focus-visible:outline-white data-[state=open]:rotate-45`}
           >
             <PlusIcon className="h-6 w-6" />

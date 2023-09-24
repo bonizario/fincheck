@@ -23,8 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={cn(
             'peer h-[3.25rem] w-full rounded-lg border border-gray-500 bg-white px-3 pt-4 text-gray-800',
             'placeholder-shown:pt-0 focus-visible:border-transparent focus-visible:pt-4',
-            error &&
-              'border-red-900 focus-visible:border-transparent focus-visible:outline-red-900',
+            error && 'border-red-900 focus-visible:outline-red-900',
             className
           )}
         />

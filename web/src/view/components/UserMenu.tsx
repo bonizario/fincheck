@@ -9,7 +9,7 @@ export function UserMenu() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <button className="w-12 rounded-full border border-teal-100 bg-teal-0">
+        <button className="w-12 justify-center rounded-full border border-teal-100 bg-teal-0">
           <span className="text-sm-medium text-teal-900">GB</span>
         </button>
       </DropdownMenu.Trigger>
