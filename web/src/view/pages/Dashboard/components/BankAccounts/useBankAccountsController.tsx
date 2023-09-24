@@ -8,12 +8,13 @@ export function useBankAccountsController() {
 
   const windowWidth = useWindowWidth();
 
-  const { areValuesVisible, toggleValueVisibility } = useDashboard();
+  const { areValuesVisible, toggleValueVisibility, openNewBankAccountModal } = useDashboard();
 
   return {
     areValuesVisible,
     bankAccounts: [],
     isLoading: false,
+    openNewBankAccountModal,
     setSliderState,
     sliderState,
     toggleValueVisibility,

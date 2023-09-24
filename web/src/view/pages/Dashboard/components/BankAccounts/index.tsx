@@ -15,6 +15,7 @@ export function BankAccounts() {
     areValuesVisible,
     bankAccounts,
     isLoading,
+    openNewBankAccountModal,
     sliderState,
     setSliderState,
     toggleValueVisibility,
@@ -59,6 +60,7 @@ export function BankAccounts() {
                 </div>
 
                 <button
+                  onClick={openNewBankAccountModal}
                   className={`
                     mt-4 flex h-52 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed
                     border-teal-600 text-white focus-visible:border-transparent focus-visible:outline-white`}

@@ -4,10 +4,13 @@ import { DropdownMenu } from '@view/components/DropdownMenu';
 import { ColoredBankAccountIcon } from '@view/components/icons/ColoredBankAccountIcon';
 import { ColoredExpenseIcon } from '@view/components/icons/ColoredExpenseIcon';
 import { ColoredIncomeIcon } from '@view/components/icons/ColoredIncomeIcon';
+import { useDashboard } from '../DashboardContext/useDashboard';
 
 export function FAB() {
+  const { openNewBankAccountModal } = useDashboard();
+
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className="fixed bottom-4 right-4 z-20">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <button
@@ -19,7 +22,7 @@ export function FAB() {
           </button>
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Content side="top" align="end" sideOffset={16}>
+        <DropdownMenu.Content align="end" side="top">
           <DropdownMenu.Item className="gap-2">
             <ColoredExpenseIcon />
             Nova Despesa
@@ -30,7 +33,7 @@ export function FAB() {
             Nova Receita
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item className="gap-2">
+          <DropdownMenu.Item onSelect={openNewBankAccountModal} className="gap-2">
             <ColoredBankAccountIcon />
             Nova Conta
           </DropdownMenu.Item>

@@ -1,4 +1,4 @@
-import * as Dialog from '@radix-ui/react-dialog';
+import * as RadixDialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
 type ModalProps = {
@@ -11,15 +11,15 @@ type ModalProps = {
 
 export function Modal({ children, onClose, open, rightAction, title }: ModalProps) {
   return (
-    <Dialog.Root open={open} onOpenChange={onClose}>
-      <Dialog.Portal>
-        <Dialog.Overlay
+    <RadixDialog.Root open={open} onOpenChange={onClose}>
+      <RadixDialog.Portal>
+        <RadixDialog.Overlay
           className={`
             fixed inset-0 z-30 bg-black/75 backdrop-blur-sm
             data-[state=open]:animate-overlay-show`}
         />
 
-        <Dialog.Content
+        <RadixDialog.Content
           onOpenAutoFocus={event => event.preventDefault()}
           className={`
             fixed left-1/2 top-1/2 z-40 w-full max-w-[25rem] -translate-x-1/2 -translate-y-1/2
@@ -37,8 +37,8 @@ export function Modal({ children, onClose, open, rightAction, title }: ModalProp
           </header>
 
           {children}
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+        </RadixDialog.Content>
+      </RadixDialog.Portal>
+    </RadixDialog.Root>
   );
 }
