@@ -7,7 +7,7 @@ import { ColoredIncomeIcon } from '@view/components/icons/ColoredIncomeIcon';
 import { useDashboard } from '../DashboardContext/useDashboard';
 
 export function FAB() {
-  const { openNewBankAccountModal } = useDashboard();
+  const { openNewBankAccountModal, openNewTransactionModal } = useDashboard();
 
   return (
     <div className="fixed bottom-4 right-4 z-20">
@@ -15,20 +15,20 @@ export function FAB() {
         <DropdownMenu.Trigger>
           <button
             className={`
-              w-12 justify-center rounded-full bg-teal-900 text-white transition-all
-            focus-visible:outline-white data-[state=open]:rotate-45`}
+              group w-12 justify-center rounded-full bg-teal-900 text-white filter transition
+              hover:brightness-110 focus-visible:outline-teal-950 data-[state=open]:brightness-110`}
           >
-            <PlusIcon className="h-6 w-6" />
+            <PlusIcon className="h-5 w-5 transition-transform group-data-[state=open]:rotate-45" />
           </button>
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content align="end" side="top">
-          <DropdownMenu.Item className="gap-2">
+          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('expense')}>
             <ColoredExpenseIcon />
             Nova Despesa
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item className="gap-2">
+          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('income')}>
             <ColoredIncomeIcon />
             Nova Receita
           </DropdownMenu.Item>
