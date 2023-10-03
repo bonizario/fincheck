@@ -26,7 +26,7 @@ export function Select({ className, error, options, placeholder }: SelectProps) 
       <div className="relative">
         <label
           className={cn(
-            'pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-gray-700',
+            'pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-700',
             selectedValue && 'left-[0.8125rem] top-2 translate-y-0 text-input-label transition-all'
           )}
         >
@@ -35,7 +35,7 @@ export function Select({ className, error, options, placeholder }: SelectProps) 
         <RadixSelect.Root onValueChange={handleSelect}>
           <RadixSelect.Trigger
             className={cn(
-              'h-[3.25rem] w-full rounded-lg border border-gray-500 bg-white px-3 pt-4 text-gray-800',
+              'h-[3.25rem] w-full rounded-lg border border-gray-500 px-3 pt-4 text-gray-800',
               'relative text-left focus-visible:border-transparent',
               error &&
                 'border-red-900 focus-visible:border-transparent focus-visible:outline-red-900',
@@ -50,7 +50,7 @@ export function Select({ className, error, options, placeholder }: SelectProps) 
           </RadixSelect.Trigger>
 
           <RadixSelect.Portal>
-            <RadixSelect.Content className="z-40 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_11px_20px_0_rgba(0,0,0,0.1)]">
+            <RadixSelect.Content className="z-20 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_11px_20px_0_rgba(0,0,0,0.1)]">
               <RadixSelect.ScrollUpButton className="flex h-6 cursor-default items-center justify-center bg-white">
                 <ChevronUpIcon />
               </RadixSelect.ScrollUpButton>

@@ -1,7 +1,7 @@
 import { Button } from '@view/components/Button';
 import { ColorsDropdownInput } from '@view/components/ColorsDropdownInput';
 import { Input } from '@view/components/Input';
-import { InputCurrency } from '@view/components/InputCurrency';
+import { CurrencyInput } from '@view/components/CurrencyInput';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
 import { useNewBankAccountModalController } from './useNewBankAccountModalController';
@@ -16,7 +16,7 @@ export function NewBankAccountModal() {
         <fieldset>
           <span className="text-input-label text-gray-600">Saldo</span>
           <div className="flex flex-row-reverse items-center gap-2">
-            <InputCurrency />
+            <CurrencyInput />
             <span className="text-lg-normal text-gray-600 peer-focus:text-lg-medium peer-focus:text-teal-900">
               R$
             </span>

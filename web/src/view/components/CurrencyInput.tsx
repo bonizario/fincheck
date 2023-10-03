@@ -1,6 +1,6 @@
 import { NumericFormat } from 'react-number-format';
 
-export function InputCurrency() {
+export function CurrencyInput() {
   return (
     <NumericFormat
       autoFocus

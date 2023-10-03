@@ -15,14 +15,14 @@ export function Modal({ children, onClose, open, rightAction, title }: ModalProp
       <RadixDialog.Portal>
         <RadixDialog.Overlay
           className={`
-            fixed inset-0 z-30 bg-black/75 backdrop-blur-sm
+            fixed inset-0 z-20 bg-black/75 backdrop-blur-sm
             data-[state=open]:animate-overlay-show`}
         />
 
         <RadixDialog.Content
           onOpenAutoFocus={event => event.preventDefault()}
           className={`
-            fixed left-1/2 top-1/2 z-40 w-full max-w-[25rem] -translate-x-1/2 -translate-y-1/2
+            fixed left-1/2 top-1/2 z-20 w-full max-w-[25rem] -translate-x-1/2 -translate-y-1/2
             space-y-10 rounded-2xl bg-white p-6 text-gray-800 shadow-[0_11px_20px_0_rgba(0,0,0,0.1)]
             data-[state=open]:animate-content-show`}
         >

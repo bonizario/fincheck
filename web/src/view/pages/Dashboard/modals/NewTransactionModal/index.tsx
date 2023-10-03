@@ -1,9 +1,10 @@
 import { Button } from '@view/components/Button';
 import { Input } from '@view/components/Input';
-import { InputCurrency } from '@view/components/InputCurrency';
+import { CurrencyInput } from '@view/components/CurrencyInput';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
 import { useNewTransactionModalController } from './useNewTransactionModalController';
+import { DatePickerInput } from '@view/components/DatePickerInput';
 
 export function NewTransactionModal() {
   const { closeNewTransactionModal, isNewTransactionModalOpen, newTransactionType } =
@@ -23,7 +24,7 @@ export function NewTransactionModal() {
             Valor da {isIncome ? 'Receita' : 'Despesa'}
           </span>
           <div className="flex flex-row-reverse items-center gap-2">
-            <InputCurrency />
+            <CurrencyInput />
             <span className="text-lg-normal text-gray-600 peer-focus:text-lg-medium peer-focus:text-teal-900">
               R$
             </span>
@@ -72,9 +73,13 @@ export function NewTransactionModal() {
               },
             ]}
           />
+
+          <DatePickerInput />
         </fieldset>
 
-        <Button className="w-full">Salvar</Button>
+        <Button className="w-full" type="button">
+          Salvar
+        </Button>
       </form>
     </Modal>
   );

@@ -6,15 +6,15 @@ import { DropdownMenu } from './DropdownMenu';
 import { ColorIcon } from './icons/ColorIcon';
 
 type ColorsDropdownInputProps = {
-  value?: string;
-  error?: string;
   className?: string;
+  error?: string;
   onChange?: (color: string) => void;
+  value?: string;
 };
 
 type Color = {
-  color: string;
   bg: string;
+  color: string;
 };
 
 const colors: Color[] = [
@@ -37,10 +37,10 @@ const colors: Color[] = [
 ];
 
 export function ColorsDropdownInput({
-  value,
-  error,
   className,
+  error,
   onChange,
+  value,
 }: ColorsDropdownInputProps) {
   const [selectedColor, setSelectedColor] = useState<Color | null>(() => {
     if (!value) {
@@ -62,7 +62,7 @@ export function ColorsDropdownInput({
             type="button"
             className={cn(
               'relative h-[3.25rem] w-full rounded-lg border border-gray-500 bg-white px-3',
-              'justify-start text-base-normal text-gray-700 focus-visible:border-transparent',
+              'text-base-normal text-gray-700 focus-visible:border-transparent',
               error && 'border-red-900 focus-visible:outline-red-900',
               className
             )}
@@ -75,7 +75,7 @@ export function ColorsDropdownInput({
           </button>
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Content className="z-40 grid grid-cols-4">
+        <DropdownMenu.Content className="z-20 grid grid-cols-4">
           {colors.map(color => (
             <DropdownMenu.Item
               key={`${color.color}${color.bg}`}
@@ -96,10 +96,3 @@ export function ColorsDropdownInput({
     </div>
   );
 }
-
-ColorsDropdownInput.defaultProps = {
-  value: null,
-  error: '',
-  className: '',
-  onChange: null,
-};

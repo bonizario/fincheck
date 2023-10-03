@@ -10,7 +10,7 @@ export function FAB() {
   const { openNewBankAccountModal, openNewTransactionModal } = useDashboard();
 
   return (
-    <div className="fixed bottom-4 right-4 z-20">
+    <div className="fixed bottom-4 right-4 z-10">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <button
