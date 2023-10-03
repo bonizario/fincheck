@@ -75,11 +75,12 @@ export function ColorsDropdownInput({
           </button>
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Content className="z-20 grid grid-cols-4">
+        <DropdownMenu.Content className="z-20 grid w-screen grid-cols-4 xs:w-[22rem]">
           {colors.map(color => (
             <DropdownMenu.Item
               key={`${color.color}${color.bg}`}
               onSelect={() => handleSelect(color)}
+              className="items-center justify-center"
             >
               <ColorIcon color={color.color} bg={color.bg} />
             </DropdownMenu.Item>
