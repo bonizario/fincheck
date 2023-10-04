@@ -13,8 +13,8 @@ type ColorsDropdownInputProps = {
 };
 
 type Color = {
-  bg: string;
-  color: string;
+  bg: `#${string}`;
+  color: `#${string}`;
 };
 
 const colors: Color[] = [

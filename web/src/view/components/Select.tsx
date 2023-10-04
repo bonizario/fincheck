@@ -7,17 +7,20 @@ import { cn } from '@app/utils/cn';
 type SelectProps = {
   className?: string;
   error?: string;
-  placeholder?: string;
+  onChange?: (value: string) => void;
   options: {
     value: string;
     label: string;
   }[];
+  placeholder?: string;
+  value?: string;
 };
 
-export function Select({ className, error, options, placeholder }: SelectProps) {
-  const [selectedValue, setSelectedValue] = useState('');
+export function Select({ className, error, onChange, options, placeholder, value }: SelectProps) {
+  const [selectedValue, setSelectedValue] = useState(value);
 
   function handleSelect(value: string) {
+    onChange?.(value);
     setSelectedValue(value);
   }
 
@@ -32,7 +35,7 @@ export function Select({ className, error, options, placeholder }: SelectProps) 
         >
           {placeholder}
         </label>
-        <RadixSelect.Root onValueChange={handleSelect}>
+        <RadixSelect.Root value={value} onValueChange={handleSelect}>
           <RadixSelect.Trigger
             className={cn(
               'h-[3.25rem] w-full rounded-lg border border-gray-500 px-3 pt-4 text-gray-800',

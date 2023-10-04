@@ -6,10 +6,18 @@ import { BANK_ACCOUNT_TYPE } from '@app/types/BankAccount';
 import { useDashboard } from '../../components/DashboardContext/useDashboard';
 
 const schema = z.object({
-  color: z.string().nonempty('Cor é obrigatória'),
+  color: z.string({
+    errorMap: () => ({
+      message: 'Cor é obrigatória',
+    }),
+  }),
   initialBalance: z.string().nonempty('Saldo inicial é obrigatório'),
-  name: z.string().nonempty('Nome da conta é obrigatório'),
-  type: z.enum(BANK_ACCOUNT_TYPE),
+  name: z.string().trim().nonempty('Nome da conta é obrigatório'),
+  type: z.enum(BANK_ACCOUNT_TYPE, {
+    errorMap: () => ({
+      message: 'Tipo de conta é obrigatório',
+    }),
+  }),
 });
 
 type FormData = z.infer<typeof schema>;

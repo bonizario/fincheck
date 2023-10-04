@@ -44,32 +44,50 @@ export function NewBankAccountModal() {
 
         <fieldset className="space-y-4">
           <Input
-            type="text"
-            placeholder="Nome da Conta"
             error={errors.name?.message}
+            placeholder="Nome da Conta"
+            type="text"
             {...register('name')}
           />
 
-          <Select
-            placeholder="Tipo"
-            options={[
-              {
-                value: 'CHECKING',
-                label: 'Conta Corrente',
-              },
-              {
-                value: 'INVESTMENT',
-                label: 'Investimentos',
-              },
-              {
-                value: 'CASH',
-                label: 'Dinheiro Físico',
-              },
-            ]}
-            error={errors.type?.message}
+          <Controller
+            control={control}
+            name="type"
+            render={({ field: { onChange, value } }) => (
+              <Select
+                error={errors.type?.message}
+                onChange={onChange}
+                options={[
+                  {
+                    value: 'CHECKING',
+                    label: 'Conta Corrente',
+                  },
+                  {
+                    value: 'INVESTMENT',
+                    label: 'Investimentos',
+                  },
+                  {
+                    value: 'CASH',
+                    label: 'Dinheiro Físico',
+                  },
+                ]}
+                placeholder="Tipo"
+                value={value}
+              />
+            )}
           />
 
-          <ColorsDropdownInput error={errors.color?.message} />
+          <Controller
+            control={control}
+            name="color"
+            render={({ field: { onChange, value } }) => (
+              <ColorsDropdownInput
+                error={errors.color?.message}
+                onChange={onChange}
+                value={value}
+              />
+            )}
+          />
         </fieldset>
 
         <Button className="w-full">Salvar</Button>
