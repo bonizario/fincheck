@@ -52,29 +52,31 @@ export function Select({ className, error, onChange, options, placeholder, value
             </RadixSelect.Icon>
           </RadixSelect.Trigger>
 
-          <RadixSelect.Portal>
-            <RadixSelect.Content className="z-20 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_11px_20px_0_rgba(0,0,0,0.1)]">
-              <RadixSelect.ScrollUpButton className="flex h-6 cursor-default items-center justify-center bg-white">
-                <ChevronUpIcon />
-              </RadixSelect.ScrollUpButton>
+          <RadixSelect.Content
+            sideOffset={8}
+            position="popper"
+            className="z-20 w-[var(--radix-select-trigger-width)] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_11px_20px_0_rgba(0,0,0,0.1)]"
+          >
+            <RadixSelect.ScrollUpButton className="flex h-6 cursor-default items-center justify-center bg-white">
+              <ChevronUpIcon />
+            </RadixSelect.ScrollUpButton>
 
-              <RadixSelect.Viewport className="space-y-2 p-2">
-                {options.map(option => (
-                  <RadixSelect.Item
-                    key={option.value}
-                    value={option.value}
-                    className="cursor-pointer select-none rounded-xl p-2 text-sm-normal transition-colors data-[highlighted]:bg-gray-100 data-[state=checked]:bg-gray-200"
-                  >
-                    <RadixSelect.ItemText>{option.label}</RadixSelect.ItemText>
-                  </RadixSelect.Item>
-                ))}
-              </RadixSelect.Viewport>
+            <RadixSelect.Viewport className="space-y-2 p-2">
+              {options.map(option => (
+                <RadixSelect.Item
+                  key={option.value}
+                  value={option.value}
+                  className="cursor-pointer select-none rounded-xl p-2 text-sm-normal transition-colors data-[highlighted]:bg-gray-100 data-[state=checked]:bg-gray-200"
+                >
+                  <RadixSelect.ItemText>{option.label}</RadixSelect.ItemText>
+                </RadixSelect.Item>
+              ))}
+            </RadixSelect.Viewport>
 
-              <RadixSelect.ScrollDownButton className="flex h-6 cursor-default items-center justify-center bg-white">
-                <ChevronDownIcon />
-              </RadixSelect.ScrollDownButton>
-            </RadixSelect.Content>
-          </RadixSelect.Portal>
+            <RadixSelect.ScrollDownButton className="flex h-6 cursor-default items-center justify-center bg-white">
+              <ChevronDownIcon />
+            </RadixSelect.ScrollDownButton>
+          </RadixSelect.Content>
         </RadixSelect.Root>
       </div>
 

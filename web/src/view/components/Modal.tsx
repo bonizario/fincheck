@@ -11,7 +11,13 @@ type ModalProps = {
 
 export function Modal({ children, onClose, open, rightAction, title }: ModalProps) {
   return (
-    <RadixDialog.Root open={open} onOpenChange={onClose}>
+    <RadixDialog.Root
+      open={open}
+      onOpenChange={() => {
+        onClose?.();
+        setTimeout(() => (document.body.style.pointerEvents = 'auto'), 0);
+      }}
+    >
       <RadixDialog.Portal>
         <RadixDialog.Overlay
           className={`

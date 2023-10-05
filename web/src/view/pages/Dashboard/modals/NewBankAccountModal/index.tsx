@@ -14,6 +14,7 @@ export function NewBankAccountModal() {
     control,
     errors,
     handleSubmit,
+    isLoading,
     isNewBankAccountModalOpen,
     register,
   } = useNewBankAccountModal();
@@ -90,7 +91,9 @@ export function NewBankAccountModal() {
           />
         </fieldset>
 
-        <Button className="w-full">Salvar</Button>
+        <Button className="w-full" isLoading={isLoading}>
+          Salvar
+        </Button>
       </form>
     </Modal>
   );

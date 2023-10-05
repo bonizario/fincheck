@@ -11,13 +11,13 @@ export function CurrencyInput({ error, onChange, value }: CurrencyInputProps) {
   return (
     <div className="peer">
       <NumericFormat
-        autoFocus
         allowLeadingZeros={false}
         allowNegative={false}
         decimalScale={2}
         decimalSeparator=","
-        fixedDecimalScale
-        onChange={event => onChange?.(event.target.value)}
+        maxLength={15}
+        onFocus={event => (event.target.value === '0' ? (event.target.value = '') : null)}
+        onValueChange={({ value }) => onChange?.(value)}
         thousandSeparator="."
         value={value}
         className="w-full text-h1 focus-visible:outline-none"
