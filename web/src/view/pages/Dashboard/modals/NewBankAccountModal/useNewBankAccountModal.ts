@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
+import { BankAccountTypes } from '@app/entities/BankAccount';
 import { bankAccountsService } from '@app/services/bankAccountsService';
-import { BankAccountTypes } from '@app/types/BankAccount';
 import { useDashboard } from '../../components/DashboardContext/useDashboard';
 
 const schema = z.object({

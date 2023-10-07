@@ -2,28 +2,53 @@ import { Controller } from 'react-hook-form';
 
 import { Button } from '@view/components/Button';
 import { ColorsDropdownInput } from '@view/components/ColorsDropdownInput';
+import { ConfirmDeleteModal } from '@view/components/ConfirmDeleteModal';
 import { CurrencyInput } from '@view/components/CurrencyInput';
 import { Input } from '@view/components/Input';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
-import { useNewBankAccountModal } from './useNewBankAccountModal';
+import { TrashIcon } from '@view/components/icons/TrashIcon';
+import { useEditBankAccountModal } from './useEditBankAccountModal';
 
-export function NewBankAccountModal() {
+export function EditBankAccountModal() {
   const {
-    closeNewBankAccountModal,
+    closeEditBankAccountModal,
     control,
     errors,
+    handleCloseConfirmDeleteModal,
+    handleConfirmDelete,
+    handleOpenConfirmDeleteModal,
     handleSubmit,
-    isLoading,
-    isNewBankAccountModalOpen,
+    isConfirmDeleteModalOpen,
+    isDeletingBankAccount,
+    isEditBankAccountModalOpen,
+    isUpdatingBankAccount,
     register,
-  } = useNewBankAccountModal();
+  } = useEditBankAccountModal();
 
   return (
-    <Modal onClose={closeNewBankAccountModal} open={isNewBankAccountModalOpen} title="Nova Conta">
+    <Modal
+      onClose={closeEditBankAccountModal}
+      open={isEditBankAccountModalOpen}
+      title="Editar Conta"
+      rightAction={
+        <button type="button" onClick={handleOpenConfirmDeleteModal}>
+          <TrashIcon className="h-6 w-6 text-red-900" />
+        </button>
+      }
+    >
+      <ConfirmDeleteModal
+        isLoading={isDeletingBankAccount}
+        onConfirm={handleConfirmDelete}
+        description="Ao excluir a conta, também serão excluídos todos os registros de receita e despesas relacionados."
+        onClose={handleCloseConfirmDeleteModal}
+        open={isConfirmDeleteModalOpen}
+        title="Tem certeza que deseja excluir esta conta?"
+      />
+
       <form onSubmit={handleSubmit} className="space-y-10">
         <fieldset>
-          <span className="text-input-label text-gray-600">Saldo Inicial</span>
+          <span className="text-input-label text-gray-600">Saldo</span>
           <div className="flex flex-row-reverse items-center gap-2">
             <Controller
               control={control}
@@ -91,8 +116,8 @@ export function NewBankAccountModal() {
           />
         </fieldset>
 
-        <Button className="w-full" isLoading={isLoading}>
-          Criar conta
+        <Button className="w-full" isLoading={isUpdatingBankAccount}>
+          Salvar
         </Button>
       </form>
     </Modal>

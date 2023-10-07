@@ -1,16 +1,16 @@
 import { Button } from '@view/components/Button';
-import { Input } from '@view/components/Input';
 import { CurrencyInput } from '@view/components/CurrencyInput';
+import { DatePickerInput } from '@view/components/DatePickerInput';
+import { Input } from '@view/components/Input';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
 import { useNewTransactionModalController } from './useNewTransactionModalController';
-import { DatePickerInput } from '@view/components/DatePickerInput';
 
 export function NewTransactionModal() {
   const { closeNewTransactionModal, isNewTransactionModalOpen, newTransactionType } =
     useNewTransactionModalController();
 
-  const isIncome = newTransactionType === 'income';
+  const isIncome = newTransactionType === 'INCOME';
 
   return (
     <Modal

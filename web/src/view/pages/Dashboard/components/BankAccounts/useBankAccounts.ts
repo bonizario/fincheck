@@ -10,7 +10,12 @@ export function useBankAccounts() {
 
   const windowWidth = useWindowWidth();
 
-  const { areValuesVisible, toggleValueVisibility, openNewBankAccountModal } = useDashboard();
+  const {
+    areValuesVisible,
+    toggleValueVisibility,
+    openNewBankAccountModal,
+    openEditBankAccountModal,
+  } = useDashboard();
 
   const { data: bankAccounts, isFetching } = useQuery({
     queryKey: ['bankAccounts'],
@@ -29,6 +34,7 @@ export function useBankAccounts() {
     bankAccounts: bankAccounts ?? [],
     currentBalance,
     isLoading: isFetching,
+    openEditBankAccountModal,
     openNewBankAccountModal,
     setSliderState,
     sliderState,

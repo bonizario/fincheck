@@ -1,14 +1,5 @@
-import { BankAccountType } from '@app/types/BankAccount';
+import { BankAccount } from '@app/entities/BankAccount';
 import { httpClient } from '../httpClient';
-
-type BankAccount = {
-  id: string;
-  color: string;
-  currentBalance: number;
-  initialBalance: number;
-  name: string;
-  type: BankAccountType;
-};
 
 type GetAllBankAccountsResponse = BankAccount[];
 
