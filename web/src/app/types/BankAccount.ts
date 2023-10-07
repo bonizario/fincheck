@@ -1,10 +1,3 @@
-export const BANK_ACCOUNT_TYPE = ['CASH', 'CHECKING', 'INVESTMENT'] as const;
+export const BankAccountTypes = ['CASH', 'CHECKING', 'INVESTMENT'] as const;
 
-export type BankAccountType = (typeof BANK_ACCOUNT_TYPE)[number];
-
-export type BankAccount = {
-  color: string;
-  balance: number;
-  name: string;
-  type: BankAccountType;
-};
+export type BankAccountType = (typeof BankAccountTypes)[number];

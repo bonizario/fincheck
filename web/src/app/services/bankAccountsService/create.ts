@@ -1,9 +1,14 @@
-import { BankAccount } from '@app/types/BankAccount';
+import { BankAccountType } from '@app/types/BankAccount';
 import { httpClient } from '../httpClient';
 
-type BankAccountParams = Omit<BankAccount, 'balance'> & { initialBalance: number };
+type CreateBankAccountParams = {
+  color: string;
+  initialBalance: number;
+  name: string;
+  type: BankAccountType;
+};
 
-export async function create(params: BankAccountParams) {
+export async function create(params: CreateBankAccountParams) {
   const { data } = await httpClient.post('/bank-accounts', params);
 
   return data;

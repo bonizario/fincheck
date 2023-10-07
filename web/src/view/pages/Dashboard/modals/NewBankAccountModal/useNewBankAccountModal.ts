@@ -1,18 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { bankAccountsService } from '@app/services/bankAccountsService';
-import { BANK_ACCOUNT_TYPE } from '@app/types/BankAccount';
+import { BankAccountTypes } from '@app/types/BankAccount';
 import { useDashboard } from '../../components/DashboardContext/useDashboard';
 
 const schema = z.object({
   color: z.string().trim().min(1, 'Cor é obrigatória'),
   initialBalance: z.string().trim().min(1, 'Saldo inicial é obrigatório'),
   name: z.string().trim().min(1, 'Nome da conta é obrigatório'),
-  type: z.enum(BANK_ACCOUNT_TYPE, {
+  type: z.enum(BankAccountTypes, {
     errorMap: () => ({
       message: 'Tipo de conta é obrigatório',
     }),
@@ -31,6 +31,13 @@ type FormData = z.infer<typeof schema>;
 export function useNewBankAccountModal() {
   const { closeNewBankAccountModal, isNewBankAccountModalOpen } = useDashboard();
 
+  const queryClient = useQueryClient();
+
+  const { isLoading, mutateAsync } = useMutation({
+    mutationFn: bankAccountsService.create,
+    onSuccess: () => queryClient.invalidateQueries(['bankAccounts']),
+  });
+
   const {
     control,
     formState: { errors },
@@ -41,8 +48,6 @@ export function useNewBankAccountModal() {
     resolver: zodResolver(schema),
     defaultValues: defaultValues as FormData,
   });
-
-  const { isLoading, mutateAsync } = useMutation(bankAccountsService.create);
 
   const handleSubmit = hookFormSubmit(async data => {
     try {

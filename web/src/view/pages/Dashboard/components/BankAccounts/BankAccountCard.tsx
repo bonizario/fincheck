@@ -1,12 +1,17 @@
-import { BankAccount } from '@app/types/BankAccount';
+import { BankAccountType } from '@app/types/BankAccount';
 import { cn } from '@app/utils/cn';
 import { formatCurrency } from '@app/utils/formatCurrency';
 import { BankAccountIcon } from '@view/components/icons/bankAccounts/BankAccountIcon';
 import { useDashboard } from '../DashboardContext/useDashboard';
 
-type BankAccountCardProps = BankAccount;
+type BankAccountCardProps = {
+  balance: number;
+  color: string;
+  name: string;
+  type: BankAccountType;
+};
 
-export function BankAccountCard({ color, name, balance, type }: BankAccountCardProps) {
+export function BankAccountCard({ balance, color, name, type }: BankAccountCardProps) {
   const { areValuesVisible } = useDashboard();
 
   return (

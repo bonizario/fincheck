@@ -14,6 +14,7 @@ export function BankAccounts() {
   const {
     areValuesVisible,
     bankAccounts,
+    currentBalance,
     isLoading,
     openNewBankAccountModal,
     sliderState,
@@ -40,7 +41,7 @@ export function BankAccounts() {
 
             <div className="flex items-center gap-2">
               <strong className={cn('text-h1 text-white', !areValuesVisible && 'blur-md')}>
-                {formatCurrency(100)}
+                {formatCurrency(currentBalance)}
               </strong>
 
               <button
@@ -96,22 +97,16 @@ export function BankAccounts() {
                     />
                   </div>
 
-                  <SwiperSlide>
-                    <BankAccountCard type="CASH" color="#FF7A00" name="Inter" balance={7650} />
-                  </SwiperSlide>
-
-                  <SwiperSlide>
-                    <BankAccountCard type="CHECKING" color="#7950F2" name="Nubank" balance={123} />
-                  </SwiperSlide>
-
-                  <SwiperSlide>
-                    <BankAccountCard
-                      type="INVESTMENT"
-                      color="#FBC105"
-                      name="XP Investimentos"
-                      balance={9500}
-                    />
-                  </SwiperSlide>
+                  {bankAccounts.map(bankAccount => (
+                    <SwiperSlide key={bankAccount.id}>
+                      <BankAccountCard
+                        balance={bankAccount.currentBalance}
+                        color={bankAccount.color}
+                        name={bankAccount.name}
+                        type={bankAccount.type}
+                      />
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
               </div>
             )}
