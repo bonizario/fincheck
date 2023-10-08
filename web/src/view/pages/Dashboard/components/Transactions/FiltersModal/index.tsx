@@ -3,7 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import { cn } from '@app/utils/cn';
 import { Button } from '@view/components/Button';
 import { Modal } from '@view/components/Modal';
-import { useFiltersModal } from './useFiltersModal';
+import { useFiltersModalController } from './useFiltersModalController';
 
 type FiltersModalProps = {
   onClose: () => void;
@@ -18,7 +18,7 @@ const mockedBankAccounts = [
 
 export function FiltersModal({ onClose, open }: FiltersModalProps) {
   const { handleChangeYear, handleSelectBankAccount, selectedBankAccountId, selectedYear } =
-    useFiltersModal();
+    useFiltersModalController();
 
   return (
     <Modal open={open} onClose={onClose} title="Filtros">

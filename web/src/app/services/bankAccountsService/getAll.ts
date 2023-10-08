@@ -1,4 +1,4 @@
-import { BankAccount } from '@app/entities/BankAccount';
+import { type BankAccount } from '@app/entities/BankAccount';
 import { httpClient } from '../httpClient';
 
 type GetAllBankAccountsResponse = BankAccount[];

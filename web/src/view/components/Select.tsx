@@ -53,9 +53,10 @@ export function Select({ className, error, onChange, options, placeholder, value
           </RadixSelect.Trigger>
 
           <RadixSelect.Content
+            side="top"
             sideOffset={8}
             position="popper"
-            className="z-20 w-[var(--radix-select-trigger-width)] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_11px_20px_0_rgba(0,0,0,0.1)]"
+            className="z-20 max-h-[20rem] w-[var(--radix-select-trigger-width)] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_11px_20px_0_rgba(0,0,0,0.1)]"
           >
             <RadixSelect.ScrollUpButton className="flex h-6 cursor-default items-center justify-center bg-white">
               <ChevronUpIcon />

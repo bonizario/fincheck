@@ -8,7 +8,7 @@ import { Spinner } from '@view/components/Spinner';
 import { EyeIcon } from '@view/components/icons/EyeIcon';
 import { BankAccountCard } from './BankAccountCard';
 import { SliderNavigation } from './SliderNavigation';
-import { useBankAccounts } from './useBankAccounts';
+import { useBankAccountsController } from './useBankAccountsController';
 
 export function BankAccounts() {
   const {
@@ -21,7 +21,7 @@ export function BankAccounts() {
     setSliderState,
     toggleValueVisibility,
     windowWidth,
-  } = useBankAccounts();
+  } = useBankAccountsController();
 
   const slidesPerView =
     (windowWidth >= 768 && windowWidth <= 1280) || windowWidth <= 500 ? 1.1 : 2.1;

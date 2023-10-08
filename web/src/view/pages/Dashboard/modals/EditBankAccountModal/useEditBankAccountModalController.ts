@@ -25,7 +25,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export function useEditBankAccountModal() {
+export function useEditBankAccountModalController() {
   const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] = useState(false);
 
   const { bankAccountBeingEdited, closeEditBankAccountModal, isEditBankAccountModalOpen } =
@@ -35,12 +35,12 @@ export function useEditBankAccountModal() {
 
   const { isLoading: isUpdatingBankAccount, mutateAsync: updateBankAccount } = useMutation({
     mutationFn: bankAccountsService.update,
-    onSuccess: () => queryClient.invalidateQueries(['bankAccounts']),
+    onSuccess: () => queryClient.invalidateQueries(['bank-accounts']),
   });
 
   const { isLoading: isDeletingBankAccount, mutateAsync: deleteBankAccount } = useMutation({
     mutationFn: bankAccountsService.remove,
-    onSuccess: () => queryClient.invalidateQueries(['bankAccounts']),
+    onSuccess: () => queryClient.invalidateQueries(['bank-accounts']),
   });
 
   const {

@@ -28,14 +28,14 @@ const defaultValues = {
 
 type FormData = z.infer<typeof schema>;
 
-export function useNewBankAccountModal() {
+export function useNewBankAccountModalController() {
   const { closeNewBankAccountModal, isNewBankAccountModalOpen } = useDashboard();
 
   const queryClient = useQueryClient();
 
   const { isLoading, mutateAsync } = useMutation({
     mutationFn: bankAccountsService.create,
-    onSuccess: () => queryClient.invalidateQueries(['bankAccounts']),
+    onSuccess: () => queryClient.invalidateQueries(['bank-accounts']),
   });
 
   const {
@@ -49,14 +49,20 @@ export function useNewBankAccountModal() {
     defaultValues: defaultValues as FormData,
   });
 
+  function handleCloseNewBankAccountModal() {
+    closeNewBankAccountModal();
+    reset();
+  }
+
   const handleSubmit = hookFormSubmit(async data => {
     try {
       await mutateAsync({
         ...data,
         initialBalance: Number(data.initialBalance),
       });
-      closeNewBankAccountModal();
-      reset();
+
+      handleCloseNewBankAccountModal();
+
       toast.success('Conta cadastrada com sucesso!');
     } catch {
       toast.error('Erro ao cadastrar conta');
@@ -64,7 +70,7 @@ export function useNewBankAccountModal() {
   });
 
   return {
-    closeNewBankAccountModal,
+    closeNewBankAccountModal: handleCloseNewBankAccountModal,
     control,
     errors,
     handleSubmit,

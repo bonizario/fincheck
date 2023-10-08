@@ -23,12 +23,12 @@ export function FAB() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content align="end" side="top">
-          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('expense')}>
+          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('EXPENSE')}>
             <ColoredExpenseIcon />
             Nova Despesa
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('income')}>
+          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('INCOME')}>
             <ColoredIncomeIcon />
             Nova Receita
           </DropdownMenu.Item>

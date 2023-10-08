@@ -1,4 +1,4 @@
-import { BankAccountType } from '@app/entities/BankAccount';
+import { type BankAccountType } from '@app/entities/BankAccount';
 import { httpClient } from '../httpClient';
 
 type UpdateBankAccountParams = {

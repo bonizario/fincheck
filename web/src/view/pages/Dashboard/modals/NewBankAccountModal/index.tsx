@@ -6,7 +6,7 @@ import { CurrencyInput } from '@view/components/CurrencyInput';
 import { Input } from '@view/components/Input';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
-import { useNewBankAccountModal } from './useNewBankAccountModal';
+import { useNewBankAccountModalController } from './useNewBankAccountModalController';
 
 export function NewBankAccountModal() {
   const {
@@ -17,7 +17,7 @@ export function NewBankAccountModal() {
     isLoading,
     isNewBankAccountModalOpen,
     register,
-  } = useNewBankAccountModal();
+  } = useNewBankAccountModalController();
 
   return (
     <Modal onClose={closeNewBankAccountModal} open={isNewBankAccountModalOpen} title="Nova Conta">

@@ -8,7 +8,7 @@ import { Input } from '@view/components/Input';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
 import { TrashIcon } from '@view/components/icons/TrashIcon';
-import { useEditBankAccountModal } from './useEditBankAccountModal';
+import { useEditBankAccountModalController } from './useEditBankAccountModalController';
 
 export function EditBankAccountModal() {
   const {
@@ -24,7 +24,7 @@ export function EditBankAccountModal() {
     isEditBankAccountModalOpen,
     isUpdatingBankAccount,
     register,
-  } = useEditBankAccountModal();
+  } = useEditBankAccountModalController();
 
   return (
     <Modal

@@ -1,8 +1,7 @@
 import { createContext, useCallback, useState } from 'react';
 
-import { BankAccount } from '@app/entities/BankAccount';
-
-type TransactionType = 'INCOME' | 'EXPENSE';
+import { type BankAccount } from '@app/entities/BankAccount';
+import { type TransactionType } from '@app/entities/Transaction';
 
 type DashboardContextValue = {
   areValuesVisible: boolean;

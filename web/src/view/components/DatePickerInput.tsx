@@ -3,15 +3,22 @@ import { useState } from 'react';
 
 import { cn } from '@app/utils/cn';
 import { formatDate } from '@app/utils/formatDate';
-import { Popover } from './Popover';
 import { DatePicker } from './DatePicker';
+import { Popover } from './Popover';
 
 type DatePickerInputProps = {
   error?: string;
+  onChange?: (date: Date) => void;
+  value?: Date;
 };
 
-export function DatePickerInput({ error }: DatePickerInputProps) {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+export function DatePickerInput({ error, onChange, value }: DatePickerInputProps) {
+  const [selectedDate, setSelectedDate] = useState(value ?? new Date());
+
+  function handleChangeDate(date: Date) {
+    setSelectedDate(date);
+    onChange?.(date);
+  }
 
   return (
     <div>
@@ -33,7 +40,7 @@ export function DatePickerInput({ error }: DatePickerInputProps) {
         </Popover.Trigger>
 
         <Popover.Content className="pointer-events-auto z-20 p-4">
-          <DatePicker value={selectedDate} onChange={setSelectedDate} />
+          <DatePicker value={selectedDate} onChange={handleChangeDate} />
         </Popover.Content>
       </Popover.Root>
 
