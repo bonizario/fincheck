@@ -48,7 +48,7 @@ export function EditBankAccountModal() {
 
       <form onSubmit={handleSubmit} className="space-y-10">
         <fieldset>
-          <span className="text-input-label text-gray-600">Saldo</span>
+          <span className="text-input-label text-gray-600">Saldo Inicial</span>
           <div className="flex flex-row-reverse items-center gap-2">
             <Controller
               control={control}

@@ -18,6 +18,7 @@ export function Transactions() {
   const {
     areValuesVisible,
     filters,
+    handleApplyFilters,
     handleChangeFilters,
     handleCloseFiltersModal,
     handleOpenFiltersModal,
@@ -31,6 +32,12 @@ export function Transactions() {
 
   return (
     <div className="flex h-full w-full flex-col rounded-2xl bg-gray-100 px-4 pb-12 pt-6 md:p-6">
+      <FiltersModal
+        onApplyFilters={handleApplyFilters}
+        onClose={handleCloseFiltersModal}
+        open={isFiltersModalOpen}
+      />
+
       {isInitialLoading && (
         <div className="flex h-full w-full items-center justify-center">
           <Spinner className="h-9 w-9" />
@@ -39,8 +46,6 @@ export function Transactions() {
 
       {!isInitialLoading && (
         <>
-          <FiltersModal open={isFiltersModalOpen} onClose={handleCloseFiltersModal} />
-
           <header>
             <div className="flex justify-between">
               <TransactionTypeDropdown

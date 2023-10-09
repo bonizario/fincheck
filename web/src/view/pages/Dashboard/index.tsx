@@ -20,7 +20,7 @@ export function Dashboard() {
               <UserMenu />
             </header>
 
-            <main className="flex flex-1 flex-col gap-4 md:flex-row">
+            <main className="flex flex-col gap-4 md:h-[calc(100%-4rem)] md:flex-row">
               <section className="w-full md:w-1/2">
                 <BankAccounts />
               </section>
