@@ -7,6 +7,8 @@ import { localStorageKeys } from '../config/localStorageKeys';
 import { usersService } from '../services/usersService';
 
 type AuthContextValue = {
+  email: string | undefined;
+  name: string | undefined;
   signedIn: boolean;
   signIn: (accessToken: string) => void;
   signOut: () => void;
@@ -21,9 +23,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return !!storedAccessToken;
   });
 
-  const { isError, isFetching, isSuccess, remove } = useQuery({
+  const { data, isError, isFetching, isSuccess, remove } = useQuery({
     queryKey: ['users', 'me'],
-    queryFn: () => usersService.me(),
+    queryFn: usersService.me,
     enabled: signedIn,
     staleTime: Infinity,
   });
@@ -51,7 +53,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [isError, signOut]);
 
   return (
-    <AuthContext.Provider value={{ signedIn: isSuccess && signedIn, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{
+        email: data?.email,
+        name: data?.name,
+        signedIn: isSuccess && signedIn,
+        signIn,
+        signOut,
+      }}
+    >
       <LaunchScreen isLoading={isFetching} />
       {!isFetching && children}
     </AuthContext.Provider>

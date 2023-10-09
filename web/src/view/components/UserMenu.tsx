@@ -1,16 +1,17 @@
 import { ExitIcon } from '@radix-ui/react-icons';
 
 import { useAuth } from '@app/hooks/useAuth';
+import { getNameInitials } from '@app/utils/getNameInitials';
 import { DropdownMenu } from './DropdownMenu';
 
 export function UserMenu() {
-  const { signOut } = useAuth();
+  const { name, signOut } = useAuth();
 
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         <button className="w-12 justify-center rounded-full border border-teal-100 bg-teal-0">
-          <span className="text-sm-medium text-teal-900">GB</span>
+          {name && <span className="text-sm-medium text-teal-900">{getNameInitials(name)}</span>}
         </button>
       </DropdownMenu.Trigger>
 
