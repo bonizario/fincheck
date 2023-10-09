@@ -10,10 +10,10 @@ import { TravelIcon } from './expense/TravelIcon';
 import { DefaultIncomeIcon } from './income/DefaultIncomeIcon';
 
 export const iconsMap = {
-  income: {
+  INCOME: {
     default: DefaultIncomeIcon,
   },
-  expense: {
+  EXPENSE: {
     default: DefaultExpenseIcon,
     food: FoodIcon,
     fun: FunIcon,

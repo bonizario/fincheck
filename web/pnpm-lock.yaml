@@ -73,6 +73,9 @@ dependencies:
     version: 3.22.3
 
 devDependencies:
+  '@tanstack/eslint-plugin-query':
+    specifier: ^4.36.1
+    version: 4.36.1(eslint@8.50.0)
   '@types/node':
     specifier: ^20.8.2
     version: 20.8.2
@@ -1364,6 +1367,14 @@ packages:
 
   /@swc/types@0.1.5:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
+    dev: true
+
+  /@tanstack/eslint-plugin-query@4.36.1(eslint@8.50.0):
+    resolution: {integrity: sha512-qFIYV/BuwWzg0t5mSRMcb+rzrOVtCO9EizYxeClFxuFq/c54cNhAQCnDrA3iCxFz/fqRv7I9rxxnR/ZWkX15cQ==}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      eslint: 8.50.0
     dev: true
 
   /@tanstack/match-sorter-utils@8.8.4:

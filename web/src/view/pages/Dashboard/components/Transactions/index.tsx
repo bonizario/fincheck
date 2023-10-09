@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { MONTHS } from '@app/config/constants';
 import { cn } from '@app/utils/cn';
 import { formatCurrency } from '@app/utils/formatCurrency';
+import { formatDate } from '@app/utils/formatDate';
 import emptyState from '@assets/empty-state.svg';
 import { Spinner } from '@view/components/Spinner';
 import { FilterIcon } from '@view/components/icons/FilterIcon';
@@ -16,6 +17,8 @@ import { useTransactionsController } from './useTransactionsController';
 export function Transactions() {
   const {
     areValuesVisible,
+    filters,
+    handleChangeFilters,
     handleCloseFiltersModal,
     handleOpenFiltersModal,
     isFiltersModalOpen,
@@ -40,7 +43,10 @@ export function Transactions() {
 
           <header>
             <div className="flex justify-between">
-              <TransactionTypeDropdown />
+              <TransactionTypeDropdown
+                onSelect={handleChangeFilters('type')}
+                selectedType={filters.type}
+              />
 
               <button onClick={handleOpenFiltersModal} className="flex items-center gap-2">
                 <span className="text-button-sm text-gray-800">Filtros</span>
@@ -49,7 +55,12 @@ export function Transactions() {
             </div>
 
             <div className="relative mt-6">
-              <Swiper slidesPerView={3} centeredSlides>
+              <Swiper
+                centeredSlides
+                initialSlide={filters.month}
+                onSlideChange={swiper => handleChangeFilters('month')(swiper.realIndex)}
+                slidesPerView={3}
+              >
                 <SliderNavigation />
 
                 {MONTHS.map((month, index) => (
@@ -79,44 +90,37 @@ export function Transactions() {
               </div>
             )}
 
-            {hasTransactions && !isLoading && (
-              <>
-                <div className="flex items-center justify-between gap-4 rounded-2xl bg-white p-4">
+            {hasTransactions &&
+              !isLoading &&
+              transactions.map(transaction => (
+                <div
+                  key={transaction.id}
+                  className="flex items-center justify-between gap-4 rounded-2xl bg-white p-4"
+                >
                   <div className="flex flex-1 items-center gap-3">
-                    <CategoryIcon type="expense" category="food" />
+                    <CategoryIcon type={transaction.type} category={transaction.category?.icon} />
                     <div>
-                      <strong className="block text-base-bold text-gray-800">Almoço</strong>
-                      <span className="text-sm-normal text-gray-600">09/08/2023</span>
+                      <strong className="block text-base-bold text-gray-800">
+                        {transaction.name}
+                      </strong>
+                      <span className="text-sm-normal text-gray-600">
+                        {formatDate(new Date(transaction.date))}
+                      </span>
                     </div>
                   </div>
                   <span
                     className={cn(
-                      'text-base-medium text-red-800',
+                      'text-base-medium',
+                      transaction.type === 'INCOME' && 'text-green-800',
+                      transaction.type === 'EXPENSE' && 'text-red-800',
                       !areValuesVisible && 'blur-[0.375rem]'
                     )}
                   >
-                    -{formatCurrency(340)}
+                    {transaction.type === 'INCOME' ? '+' : '-'}
+                    {formatCurrency(transaction.value)}
                   </span>
                 </div>
-                <div className="flex items-center justify-between gap-4 rounded-2xl bg-white p-4">
-                  <div className="flex flex-1 items-center gap-3">
-                    <CategoryIcon type="income" />
-                    <div>
-                      <strong className="block text-base-bold text-gray-800">Salário</strong>
-                      <span className="text-sm-normal text-gray-600">09/08/2023</span>
-                    </div>
-                  </div>
-                  <span
-                    className={cn(
-                      'text-base-medium text-green-800',
-                      !areValuesVisible && 'blur-[0.375rem]'
-                    )}
-                  >
-                    +{formatCurrency(4000)}
-                  </span>
-                </div>
-              </>
-            )}
+              ))}
           </div>
         </>
       )}
