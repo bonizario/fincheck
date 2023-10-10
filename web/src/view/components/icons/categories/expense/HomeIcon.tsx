@@ -1,6 +1,12 @@
 export function HomeIcon() {
   return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="44"
+      height="44"
+      viewBox="0 0 44 44"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect x="1" y="1" width="42" height="42" rx="21" fill="#FFF0F6" />
       <path
         d="M14.4971 18.7754V27.4504C14.4971 29.1424 15.869 30.5143 17.561 30.5143H26.4403C28.1323 30.5143 29.5042 29.1424 29.5042 27.4504V18.7754"
@@ -30,7 +36,15 @@ export function HomeIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <rect x="1" y="1" width="42" height="42" rx="21" stroke="white" strokeWidth="2" />
+      <rect
+        x="1"
+        y="1"
+        width="42"
+        height="42"
+        rx="21"
+        stroke="white"
+        strokeWidth="2"
+      />
     </svg>
   );
 }

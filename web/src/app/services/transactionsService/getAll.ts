@@ -11,9 +11,12 @@ export type GetAllTransactionsFilters = {
 };
 
 export async function getAll(filters: GetAllTransactionsFilters) {
-  const { data } = await httpClient.get<GetAllTransactionsResponse>('/transactions', {
-    params: filters,
-  });
+  const { data } = await httpClient.get<GetAllTransactionsResponse>(
+    '/transactions',
+    {
+      params: filters,
+    }
+  );
 
   return data;
 }

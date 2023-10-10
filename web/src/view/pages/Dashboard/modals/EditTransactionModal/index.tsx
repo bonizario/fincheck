@@ -1,38 +1,46 @@
 import { Controller } from 'react-hook-form';
 
 import { TRANSACTION_TYPE } from '@app/config/constants';
+import { type TransactionType } from '@app/entities/Transaction';
 import { Button } from '@view/components/Button';
 import { CurrencyInput } from '@view/components/CurrencyInput';
 import { DatePickerInput } from '@view/components/DatePickerInput';
 import { Input } from '@view/components/Input';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
-import { useNewTransactionModalController } from './useNewTransactionModalController';
+import { useEditTransactionModalController } from './useEditTransactionModalController';
 
-export function NewTransactionModal() {
+type EditTransactionModalProps = {
+  onClose: () => void;
+  open: boolean;
+  transactionType: TransactionType;
+};
+
+export function EditTransactionModal({
+  onClose,
+  open,
+  transactionType,
+}: EditTransactionModalProps) {
   const {
     bankAccounts,
     categories,
-    closeNewTransactionModal,
     control,
     errors,
     handleSubmit,
     isLoading,
-    isNewTransactionModalOpen,
-    newTransactionType,
     register,
-  } = useNewTransactionModalController();
+  } = useEditTransactionModalController(transactionType);
 
   return (
     <Modal
-      onClose={closeNewTransactionModal}
-      open={isNewTransactionModalOpen}
-      title={`Editar ${TRANSACTION_TYPE[newTransactionType!]}`}
+      onClose={onClose}
+      open={open}
+      title={`Editar ${TRANSACTION_TYPE[transactionType]}`}
     >
       <form onSubmit={handleSubmit} className="space-y-10">
         <fieldset>
           <span className="text-input-label text-gray-600">
-            Valor da {TRANSACTION_TYPE[newTransactionType!]}
+            Valor da {TRANSACTION_TYPE[transactionType]}
           </span>
           <div className="flex flex-row-reverse items-center gap-2">
             <Controller
@@ -56,7 +64,7 @@ export function NewTransactionModal() {
         <fieldset className="space-y-4">
           <Input
             error={errors.name?.message}
-            placeholder={`Nome da ${TRANSACTION_TYPE[newTransactionType!]}`}
+            placeholder={`Nome da ${TRANSACTION_TYPE[transactionType]}`}
             type="text"
             {...register('name')}
           />
@@ -90,7 +98,7 @@ export function NewTransactionModal() {
                   value: bankAccount.id,
                 }))}
                 placeholder={
-                  newTransactionType === 'INCOME' ? 'Receber com' : 'Pagar com'
+                  transactionType === 'INCOME' ? 'Receber com' : 'Pagar com'
                 }
                 value={value}
               />
@@ -111,7 +119,7 @@ export function NewTransactionModal() {
         </fieldset>
 
         <Button className="w-full" type="submit" isLoading={isLoading}>
-          Criar transação
+          Salvar
         </Button>
       </form>
     </Modal>

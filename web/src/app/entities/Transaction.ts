@@ -1,4 +1,6 @@
-export type TransactionType = 'INCOME' | 'EXPENSE';
+import { TRANSACTION_TYPE } from '@app/config/constants';
+
+export type TransactionType = keyof typeof TRANSACTION_TYPE;
 
 export type Transaction = {
   id: string;

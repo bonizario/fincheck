@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
-import { useBankAccounts } from '@app/hooks/useBankAccounts';
-import { useCategories } from '@app/hooks/useCategories';
+import { TRANSACTION_TYPE } from '@app/config/constants';
+import { useGetAllBankAccounts } from '@app/hooks/bankAccounts';
+import { useGetAllCategories } from '@app/hooks/categories';
 import { transactionsService } from '@app/services/transactionsService';
 import { useDashboard } from '../../components/DashboardContext/useDashboard';
 
@@ -21,8 +22,11 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function useNewTransactionModalController() {
-  const { closeNewTransactionModal, isNewTransactionModalOpen, newTransactionType } =
-    useDashboard();
+  const {
+    closeNewTransactionModal,
+    isNewTransactionModalOpen,
+    newTransactionType,
+  } = useDashboard();
 
   const {
     control,
@@ -43,9 +47,9 @@ export function useNewTransactionModalController() {
 
   const queryClient = useQueryClient();
 
-  const { bankAccounts } = useBankAccounts();
+  const { bankAccounts } = useGetAllBankAccounts();
 
-  const { categories: allCategories } = useCategories();
+  const { categories: allCategories } = useGetAllCategories();
 
   const { isLoading, mutateAsync: createTransaction } = useMutation({
     mutationFn: transactionsService.create,
@@ -56,15 +60,15 @@ export function useNewTransactionModalController() {
   });
 
   const categories = useMemo(() => {
-    return allCategories.filter(category => category.type === newTransactionType);
+    return allCategories.filter(
+      category => category.type === newTransactionType
+    );
   }, [allCategories, newTransactionType]);
 
   function handleCloseNewTransactionModal() {
     closeNewTransactionModal();
     reset();
   }
-
-  const toastTransactionType = newTransactionType === 'INCOME' ? 'Receita' : 'Despesa';
 
   const handleSubmit = hookFormSubmit(async data => {
     try {
@@ -77,9 +81,11 @@ export function useNewTransactionModalController() {
 
       handleCloseNewTransactionModal();
 
-      toast.success(`${toastTransactionType} cadastrada com sucesso!`);
+      toast.success(
+        `${TRANSACTION_TYPE[newTransactionType!]} cadastrada com sucesso!`
+      );
     } catch {
-      toast.error(`Erro ao cadastrar ${toastTransactionType}`);
+      toast.error(`Erro ao cadastrar ${TRANSACTION_TYPE[newTransactionType!]}`);
     }
   });
 

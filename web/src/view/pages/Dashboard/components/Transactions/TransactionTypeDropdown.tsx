@@ -11,7 +11,10 @@ type TransactionTypeDropdownProps = {
   selectedType: TransactionType | undefined;
 };
 
-export function TransactionTypeDropdown({ onSelect, selectedType }: TransactionTypeDropdownProps) {
+export function TransactionTypeDropdown({
+  onSelect,
+  selectedType,
+}: TransactionTypeDropdownProps) {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="gap-2">
@@ -31,12 +34,18 @@ export function TransactionTypeDropdown({ onSelect, selectedType }: TransactionT
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Content className="w-[17.5rem]">
-        <DropdownMenu.Item className="gap-2" onSelect={() => onSelect('INCOME')}>
+        <DropdownMenu.Item
+          className="gap-2"
+          onSelect={() => onSelect('INCOME')}
+        >
           <IncomesIcon />
           Receitas
         </DropdownMenu.Item>
 
-        <DropdownMenu.Item className="gap-2" onSelect={() => onSelect('EXPENSE')}>
+        <DropdownMenu.Item
+          className="gap-2"
+          onSelect={() => onSelect('EXPENSE')}
+        >
           <ExpensesIcon />
           Despesas
         </DropdownMenu.Item>

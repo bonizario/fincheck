@@ -1,7 +1,20 @@
 export function ColoredExpenseIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1.03125" y="1.03125" width="29.9375" height="29.9375" rx="14.9688" fill="#FFF5F5" />
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="1.03125"
+        y="1.03125"
+        width="29.9375"
+        height="29.9375"
+        rx="14.9688"
+        fill="#FFF5F5"
+      />
       <path
         d="M17.2595 22.3468H10.4222C8.53446 22.3468 7.36035 21.0149 7.36035 19.13V12.0274C7.36035 10.1425 8.53446 8.81055 10.4212 8.81055H21.5795C23.4606 8.81055 24.6404 10.1425 24.6404 12.0274V13.946"
         stroke="#C92A2A"

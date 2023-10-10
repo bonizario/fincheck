@@ -1,7 +1,20 @@
 export function ColoredIncomeIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1.03125" y="1.03125" width="29.9375" height="29.9375" rx="14.9688" fill="#EBFBEE" />
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="1.03125"
+        y="1.03125"
+        width="29.9375"
+        height="29.9375"
+        rx="14.9688"
+        fill="#EBFBEE"
+      />
       <path
         d="M17.2585 22.3468H10.4212C8.53348 22.3468 7.35938 21.0149 7.35938 19.13V12.0274C7.35938 10.1425 8.53348 8.81055 10.4203 8.81055H21.5785C23.4596 8.81055 24.6394 10.1425 24.6394 12.0274V13.946"
         stroke="#2B8A3E"

@@ -6,7 +6,10 @@ type SliderNavigationProps = {
   isEnd: boolean;
 };
 
-export function SliderNavigation({ isBeginning, isEnd }: SliderNavigationProps) {
+export function SliderNavigation({
+  isBeginning,
+  isEnd,
+}: SliderNavigationProps) {
   const swiper = useSwiper();
 
   return (

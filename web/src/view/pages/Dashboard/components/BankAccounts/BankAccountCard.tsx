@@ -22,7 +22,9 @@ export function BankAccountCard({ bankAccount }: BankAccountCardProps) {
     >
       <div>
         <BankAccountIcon type={type} />
-        <span className="mt-4 block text-base-medium text-gray-800">{name}</span>
+        <span className="mt-4 block text-base-medium text-gray-800">
+          {name}
+        </span>
       </div>
 
       <div>

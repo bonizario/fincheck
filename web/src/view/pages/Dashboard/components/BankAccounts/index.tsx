@@ -24,7 +24,9 @@ export function BankAccounts() {
   } = useBankAccountsController();
 
   const slidesPerView =
-    (windowWidth >= 768 && windowWidth <= 1280) || windowWidth <= 500 ? 1.1 : 2.1;
+    (windowWidth >= 768 && windowWidth <= 1280) || windowWidth <= 500
+      ? 1.1
+      : 2.1;
 
   return (
     <div className="flex h-full w-full flex-col rounded-2xl bg-teal-900 px-4 py-8 md:p-10">
@@ -37,10 +39,17 @@ export function BankAccounts() {
       {!isLoading && (
         <>
           <div>
-            <span className="mb-2 block text-base-normal text-white">Saldo total</span>
+            <span className="mb-2 block text-base-normal text-white">
+              Saldo total
+            </span>
 
             <div className="flex items-center gap-2">
-              <strong className={cn('text-h1 text-white', !areValuesVisible && 'blur-md')}>
+              <strong
+                className={cn(
+                  'text-h1 text-white',
+                  !areValuesVisible && 'blur-md'
+                )}
+              >
                 {formatCurrency(currentBalance)}
               </strong>
 
@@ -82,14 +91,19 @@ export function BankAccounts() {
                   spaceBetween={16}
                   slidesPerView={slidesPerView}
                   onSlideChange={swiper => {
-                    setSliderState({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd });
+                    setSliderState({
+                      isBeginning: swiper.isBeginning,
+                      isEnd: swiper.isEnd,
+                    });
                   }}
                 >
                   <div
                     slot="container-start"
                     className="mb-4 flex items-center justify-between pr-0.5 pt-0.5"
                   >
-                    <strong className="text-h4 text-white">Minhas Contas</strong>
+                    <strong className="text-h4 text-white">
+                      Minhas Contas
+                    </strong>
 
                     <SliderNavigation
                       isBeginning={sliderState.isBeginning}

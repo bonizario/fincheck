@@ -9,7 +9,13 @@ type ModalProps = {
   title: string;
 };
 
-export function Modal({ children, onClose, open, rightAction, title }: ModalProps) {
+export function Modal({
+  children,
+  onClose,
+  open,
+  rightAction,
+  title,
+}: ModalProps) {
   return (
     <RadixDialog.Root
       open={open}
@@ -33,13 +39,18 @@ export function Modal({ children, onClose, open, rightAction, title }: ModalProp
             data-[state=open]:animate-content-show`}
         >
           <header className="flex h-12 items-center justify-between">
-            <button onClick={onClose} className="flex h-12 w-12 items-center justify-center">
+            <button
+              onClick={onClose}
+              className="flex h-12 w-12 items-center justify-center"
+            >
               <Cross2Icon className="h-6 w-6" />
             </button>
 
             <span className="text-h4">{title}</span>
 
-            <div className="flex h-12 w-12 items-center justify-center">{rightAction}</div>
+            <div className="flex h-12 w-12 items-center justify-center">
+              {rightAction}
+            </div>
           </header>
 
           {children}

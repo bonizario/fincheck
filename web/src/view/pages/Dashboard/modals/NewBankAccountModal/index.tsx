@@ -1,5 +1,6 @@
 import { Controller } from 'react-hook-form';
 
+import { BANK_ACCOUNT_TYPE } from '@app/config/constants';
 import { Button } from '@view/components/Button';
 import { ColorsDropdownInput } from '@view/components/ColorsDropdownInput';
 import { CurrencyInput } from '@view/components/CurrencyInput';
@@ -20,7 +21,11 @@ export function NewBankAccountModal() {
   } = useNewBankAccountModalController();
 
   return (
-    <Modal onClose={closeNewBankAccountModal} open={isNewBankAccountModalOpen} title="Nova Conta">
+    <Modal
+      onClose={closeNewBankAccountModal}
+      open={isNewBankAccountModalOpen}
+      title="Nova Conta"
+    >
       <form onSubmit={handleSubmit} className="space-y-10">
         <fieldset>
           <span className="text-input-label text-gray-600">Saldo Inicial</span>
@@ -58,20 +63,9 @@ export function NewBankAccountModal() {
               <Select
                 error={errors.type?.message}
                 onChange={onChange}
-                options={[
-                  {
-                    value: 'CHECKING',
-                    label: 'Conta Corrente',
-                  },
-                  {
-                    value: 'INVESTMENT',
-                    label: 'Investimentos',
-                  },
-                  {
-                    value: 'CASH',
-                    label: 'Dinheiro Físico',
-                  },
-                ]}
+                options={Object.entries(BANK_ACCOUNT_TYPE).map(
+                  ([value, label]) => ({ value, label })
+                )}
                 placeholder="Tipo"
                 value={value}
               />

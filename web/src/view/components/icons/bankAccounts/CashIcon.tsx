@@ -1,6 +1,12 @@
 export function CashIcon() {
   return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="44"
+      height="44"
+      viewBox="0 0 44 44"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect x="1" y="1" width="42" height="42" rx="21" fill="#E9ECEF" />
       <path
         d="M16.1884 14.9492H27.8116C29.777 14.9492 31 16.3367 31 18.3001V25.6986C31 27.6621 29.777 29.0495 27.8106 29.0495H16.1884C14.223 29.0495 13 27.6621 13 25.6986V18.3001C13 16.3367 14.2289 14.9492 16.1884 14.9492Z"
@@ -32,7 +38,15 @@ export function CashIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <rect x="1" y="1" width="42" height="42" rx="21" stroke="white" strokeWidth="2" />
+      <rect
+        x="1"
+        y="1"
+        width="42"
+        height="42"
+        rx="21"
+        stroke="white"
+        strokeWidth="2"
+      />
     </svg>
   );
 }

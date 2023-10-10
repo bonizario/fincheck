@@ -6,10 +6,12 @@ import { z } from 'zod';
 
 import { useAuth } from '@app/hooks/useAuth';
 import { authService } from '@app/services/authService';
-import { SignInParams } from '@app/services/authService/signIn';
 
 const schema = z.object({
-  email: z.string().nonempty('Email é obrigatório.').email('Insira um email válido.'),
+  email: z
+    .string()
+    .nonempty('Email é obrigatório.')
+    .email('Insira um email válido.'),
   password: z
     .string()
     .nonempty('Senha é obrigatória.')
@@ -26,7 +28,7 @@ export function useLoginController() {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const { isLoading, mutateAsync } = useMutation({
-    mutationFn: async (data: SignInParams) => authService.signIn(data),
+    mutationFn: authService.signIn,
   });
 
   const { signIn } = useAuth();

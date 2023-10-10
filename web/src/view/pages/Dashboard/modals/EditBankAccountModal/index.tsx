@@ -1,5 +1,6 @@
 import { Controller } from 'react-hook-form';
 
+import { BANK_ACCOUNT_TYPE } from '@app/config/constants';
 import { Button } from '@view/components/Button';
 import { ColorsDropdownInput } from '@view/components/ColorsDropdownInput';
 import { ConfirmDeleteModal } from '@view/components/ConfirmDeleteModal';
@@ -83,20 +84,9 @@ export function EditBankAccountModal() {
               <Select
                 error={errors.type?.message}
                 onChange={onChange}
-                options={[
-                  {
-                    value: 'CHECKING',
-                    label: 'Conta Corrente',
-                  },
-                  {
-                    value: 'INVESTMENT',
-                    label: 'Investimentos',
-                  },
-                  {
-                    value: 'CASH',
-                    label: 'Dinheiro Físico',
-                  },
-                ]}
+                options={Object.entries(BANK_ACCOUNT_TYPE).map(
+                  ([value, label]) => ({ value, label })
+                )}
                 placeholder="Tipo"
                 value={value}
               />

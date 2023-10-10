@@ -4,10 +4,12 @@ export function getNameInitials(name: string | undefined): string {
   }
 
   const names = name.split(' ');
+  const firstInitial = names[0].charAt(0).toUpperCase();
+  const lastInitial = names[names.length - 1].charAt(0).toUpperCase();
 
   if (names.length === 1) {
-    return names[0].charAt(0).toUpperCase();
+    return firstInitial;
   }
 
-  return `${names[0].charAt(0).toUpperCase()}${names[names.length - 1].charAt(0).toUpperCase()}`;
+  return `${firstInitial}${lastInitial}`;
 }

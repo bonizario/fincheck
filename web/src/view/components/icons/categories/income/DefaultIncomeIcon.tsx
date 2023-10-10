@@ -1,6 +1,12 @@
 export function DefaultIncomeIcon() {
   return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="44"
+      height="44"
+      viewBox="0 0 44 44"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect x="1" y="1" width="42" height="42" rx="21" fill="#EBFBEE" />
       <path
         d="M23.2591 28.3475H16.4218C14.5341 28.3475 13.36 27.0156 13.36 25.1307V18.0282C13.36 16.1432 14.5341 14.8113 16.4209 14.8113H27.5791C29.4602 14.8113 30.64 16.1432 30.64 18.0282V19.9467"
@@ -39,7 +45,15 @@ export function DefaultIncomeIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <rect x="1" y="1" width="42" height="42" rx="21" stroke="white" strokeWidth="2" />
+      <rect
+        x="1"
+        y="1"
+        width="42"
+        height="42"
+        rx="21"
+        stroke="white"
+        strokeWidth="2"
+      />
     </svg>
   );
 }

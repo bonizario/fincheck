@@ -22,10 +22,15 @@ type DropdownMenuItemProps = {
 };
 
 export function DropdownMenuRoot({ children }: { children: React.ReactNode }) {
-  return <RadixDropdownMenu.Root modal={false}>{children}</RadixDropdownMenu.Root>;
+  return (
+    <RadixDropdownMenu.Root modal={false}>{children}</RadixDropdownMenu.Root>
+  );
 }
 
-export function DropdownMenuTrigger({ children, className }: DropdownMenuTriggerProps) {
+export function DropdownMenuTrigger({
+  children,
+  className,
+}: DropdownMenuTriggerProps) {
   return (
     <RadixDropdownMenu.Trigger
       asChild
@@ -63,7 +68,11 @@ export function DropdownMenuContent({
   );
 }
 
-export function DropdownMenuItem({ children, className, onSelect }: DropdownMenuItemProps) {
+export function DropdownMenuItem({
+  children,
+  className,
+  onSelect,
+}: DropdownMenuItemProps) {
   return (
     <RadixDropdownMenu.Item
       onSelect={onSelect}

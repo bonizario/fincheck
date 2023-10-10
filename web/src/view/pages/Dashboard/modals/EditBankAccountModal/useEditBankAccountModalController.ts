@@ -1,12 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
-import { BankAccountTypes } from '@app/entities/BankAccount';
-import { bankAccountsService } from '@app/services/bankAccountsService';
+import { BANK_ACCOUNT_TYPE } from '@app/config/constants';
+import { type BankAccountType } from '@app/entities/BankAccount';
+import {
+  useDeleteBankAccount,
+  useUpdateBankAccount,
+} from '@app/hooks/bankAccounts';
 import { useDashboard } from '../../components/DashboardContext/useDashboard';
 
 const schema = z.object({
@@ -16,7 +19,7 @@ const schema = z.object({
     z.string().trim().min(1, 'Saldo inicial é obrigatório'),
   ]),
   name: z.string().trim().min(1, 'Nome da conta é obrigatório'),
-  type: z.enum(BankAccountTypes, {
+  type: z.enum(Object.keys(BANK_ACCOUNT_TYPE) as [BankAccountType], {
     errorMap: () => ({
       message: 'Tipo de conta é obrigatório',
     }),
@@ -26,22 +29,18 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function useEditBankAccountModalController() {
-  const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] = useState(false);
+  const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] =
+    useState(false);
 
-  const { bankAccountBeingEdited, closeEditBankAccountModal, isEditBankAccountModalOpen } =
-    useDashboard();
+  const {
+    bankAccountBeingEdited,
+    closeEditBankAccountModal,
+    isEditBankAccountModalOpen,
+  } = useDashboard();
 
-  const queryClient = useQueryClient();
+  const { isUpdatingBankAccount, updateBankAccount } = useUpdateBankAccount();
 
-  const { isLoading: isUpdatingBankAccount, mutateAsync: updateBankAccount } = useMutation({
-    mutationFn: bankAccountsService.update,
-    onSuccess: () => queryClient.invalidateQueries(['bank-accounts']),
-  });
-
-  const { isLoading: isDeletingBankAccount, mutateAsync: deleteBankAccount } = useMutation({
-    mutationFn: bankAccountsService.remove,
-    onSuccess: () => queryClient.invalidateQueries(['bank-accounts']),
-  });
+  const { isDeletingBankAccount, deleteBankAccount } = useDeleteBankAccount();
 
   const {
     control,

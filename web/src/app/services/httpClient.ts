@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { localStorageKeys } from '../config/localStorageKeys';
+import { LOCAL_STORAGE_KEYS } from '../config/constants';
 import { sleep } from '../utils/sleep';
 
 export const httpClient = axios.create({
@@ -8,7 +8,9 @@ export const httpClient = axios.create({
 });
 
 httpClient.interceptors.request.use(config => {
-  const storedAccessToken = localStorage.getItem(localStorageKeys.ACCESS_TOKEN);
+  const storedAccessToken = localStorage.getItem(
+    LOCAL_STORAGE_KEYS.ACCESS_TOKEN
+  );
 
   if (storedAccessToken) {
     config.headers.Authorization = `Bearer ${storedAccessToken}`;
@@ -18,7 +20,7 @@ httpClient.interceptors.request.use(config => {
 });
 
 httpClient.interceptors.response.use(async data => {
-  await sleep(2000);
+  await sleep();
 
   return data;
 });

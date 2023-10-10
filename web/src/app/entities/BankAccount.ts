@@ -1,6 +1,6 @@
-export const BankAccountTypes = ['CASH', 'CHECKING', 'INVESTMENT'] as const;
+import { BANK_ACCOUNT_TYPE } from '@app/config/constants';
 
-export type BankAccountType = (typeof BankAccountTypes)[number];
+export type BankAccountType = keyof typeof BANK_ACCOUNT_TYPE;
 
 export type BankAccount = {
   id: string;

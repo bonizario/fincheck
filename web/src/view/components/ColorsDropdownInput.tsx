@@ -69,8 +69,12 @@ export function ColorsDropdownInput({
           >
             Cor
             <div className="absolute right-3 top-1/2 -translate-y-1/2">
-              {!selectedColor && <ChevronDownIcon className="h-6 w-6 text-gray-800" />}
-              {selectedColor && <ColorIcon color={selectedColor.color} bg={selectedColor.bg} />}
+              {!selectedColor && (
+                <ChevronDownIcon className="h-6 w-6 text-gray-800" />
+              )}
+              {selectedColor && (
+                <ColorIcon color={selectedColor.color} bg={selectedColor.bg} />
+              )}
             </div>
           </button>
         </DropdownMenu.Trigger>

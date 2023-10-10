@@ -23,17 +23,26 @@ export function FAB() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content align="end" side="top">
-          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('EXPENSE')}>
+          <DropdownMenu.Item
+            onSelect={() => openNewTransactionModal('EXPENSE')}
+            className="gap-2"
+          >
             <ColoredExpenseIcon />
             Nova Despesa
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal('INCOME')}>
+          <DropdownMenu.Item
+            onSelect={() => openNewTransactionModal('INCOME')}
+            className="gap-2"
+          >
             <ColoredIncomeIcon />
             Nova Receita
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item onSelect={openNewBankAccountModal} className="gap-2">
+          <DropdownMenu.Item
+            onSelect={openNewBankAccountModal}
+            className="gap-2"
+          >
             <ColoredBankAccountIcon />
             Nova Conta
           </DropdownMenu.Item>

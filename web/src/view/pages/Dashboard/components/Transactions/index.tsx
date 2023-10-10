@@ -53,7 +53,10 @@ export function Transactions() {
                 selectedType={filters.type}
               />
 
-              <button onClick={handleOpenFiltersModal} className="flex items-center gap-2">
+              <button
+                onClick={handleOpenFiltersModal}
+                className="flex items-center gap-2"
+              >
                 <span className="text-button-sm text-gray-800">Filtros</span>
                 <FilterIcon />
               </button>
@@ -63,7 +66,9 @@ export function Transactions() {
               <Swiper
                 centeredSlides
                 initialSlide={filters.month}
-                onSlideChange={swiper => handleChangeFilters('month')(swiper.realIndex)}
+                onSlideChange={swiper =>
+                  handleChangeFilters('month')(swiper.realIndex)
+                }
                 slidesPerView={3}
               >
                 <SliderNavigation />
@@ -71,7 +76,11 @@ export function Transactions() {
                 {MONTHS.map((month, index) => (
                   <SwiperSlide key={month} className="p-2">
                     {({ isActive }) => (
-                      <SliderOption isActive={isActive} month={month} index={index} />
+                      <SliderOption
+                        isActive={isActive}
+                        month={month}
+                        index={index}
+                      />
                     )}
                   </SwiperSlide>
                 ))}
@@ -103,7 +112,10 @@ export function Transactions() {
                   className="flex items-center justify-between gap-4 rounded-2xl bg-white p-4"
                 >
                   <div className="flex flex-1 items-center gap-3">
-                    <CategoryIcon type={transaction.type} category={transaction.category?.icon} />
+                    <CategoryIcon
+                      type={transaction.type}
+                      category={transaction.category?.icon}
+                    />
                     <div>
                       <strong className="block text-base-bold text-gray-800">
                         {transaction.name}

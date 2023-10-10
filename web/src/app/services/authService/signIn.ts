@@ -1,6 +1,6 @@
 import { httpClient } from '../httpClient';
 
-export type SignInParams = {
+type SignInParams = {
   email: string;
   password: string;
 };
@@ -10,7 +10,10 @@ type SignInResponse = {
 };
 
 export async function signIn(params: SignInParams) {
-  const { data } = await httpClient.post<SignInResponse>('/auth/signin', params);
+  const { data } = await httpClient.post<SignInResponse>(
+    '/auth/signin',
+    params
+  );
 
   return data;
 }

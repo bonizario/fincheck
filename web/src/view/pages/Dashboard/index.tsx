@@ -1,7 +1,10 @@
 import { Logo } from '@view/components/Logo';
 import { UserMenu } from '@view/components/UserMenu';
 import { BankAccounts } from './components/BankAccounts';
-import { DashboardContext, DashboardProvider } from './components/DashboardContext';
+import {
+  DashboardContext,
+  DashboardProvider,
+} from './components/DashboardContext';
 import { FAB } from './components/FAB';
 import { Transactions } from './components/Transactions';
 import { EditBankAccountModal } from './modals/EditBankAccountModal';

@@ -1,4 +1,8 @@
-import { ChevronDownIcon, ChevronUpIcon, CrossCircledIcon } from '@radix-ui/react-icons';
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  CrossCircledIcon,
+} from '@radix-ui/react-icons';
 import * as RadixSelect from '@radix-ui/react-select';
 import { useState } from 'react';
 
@@ -16,7 +20,14 @@ type SelectProps = {
   value?: string;
 };
 
-export function Select({ className, error, onChange, options, placeholder, value }: SelectProps) {
+export function Select({
+  className,
+  error,
+  onChange,
+  options,
+  placeholder,
+  value,
+}: SelectProps) {
   const [selectedValue, setSelectedValue] = useState(value);
 
   function handleSelect(value: string) {
@@ -30,7 +41,8 @@ export function Select({ className, error, onChange, options, placeholder, value
         <label
           className={cn(
             'pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-700',
-            selectedValue && 'left-[0.8125rem] top-2 translate-y-0 text-input-label transition-all'
+            selectedValue &&
+              'left-[0.8125rem] top-2 translate-y-0 text-input-label transition-all'
           )}
         >
           {placeholder}

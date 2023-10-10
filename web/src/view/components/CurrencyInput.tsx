@@ -16,7 +16,9 @@ export function CurrencyInput({ error, onChange, value }: CurrencyInputProps) {
         decimalScale={2}
         decimalSeparator=","
         maxLength={15}
-        onFocus={event => (event.target.value === '0' ? (event.target.value = '') : null)}
+        onFocus={event =>
+          event.target.value === '0' ? (event.target.value = '') : null
+        }
         onValueChange={({ value }) => onChange?.(value)}
         thousandSeparator="."
         value={value}

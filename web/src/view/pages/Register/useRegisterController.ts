@@ -6,11 +6,13 @@ import { z } from 'zod';
 
 import { useAuth } from '@app/hooks/useAuth';
 import { authService } from '@app/services/authService';
-import { SignUpParams } from '@app/services/authService/signUp';
 
 const schema = z.object({
   name: z.string().nonempty('Nome é obrigatório.'),
-  email: z.string().nonempty('Email é obrigatório.').email('Insira um email válido.'),
+  email: z
+    .string()
+    .nonempty('Email é obrigatório.')
+    .email('Insira um email válido.'),
   password: z
     .string()
     .nonempty('Senha é obrigatória.')
@@ -27,7 +29,7 @@ export function useRegisterController() {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const { isLoading, mutateAsync } = useMutation({
-    mutationFn: async (data: SignUpParams) => authService.signUp(data),
+    mutationFn: authService.signUp,
   });
 
   const { signIn } = useAuth();

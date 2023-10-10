@@ -12,7 +12,11 @@ type DatePickerInputProps = {
   value?: Date;
 };
 
-export function DatePickerInput({ error, onChange, value }: DatePickerInputProps) {
+export function DatePickerInput({
+  error,
+  onChange,
+  value,
+}: DatePickerInputProps) {
   const [selectedDate, setSelectedDate] = useState(value ?? new Date());
 
   function handleChangeDate(date: Date) {

@@ -29,10 +29,20 @@ export function ConfirmDeleteModal({
         {description && <p className="text-base-normal">{description}</p>}
       </div>
       <div className="space-y-4">
-        <Button className="w-full" variant="danger" isLoading={isLoading} onClick={onConfirm}>
+        <Button
+          isLoading={isLoading}
+          onClick={onConfirm}
+          variant="danger"
+          className="w-full"
+        >
           Sim, desejo excluir
         </Button>
-        <Button className="w-full" variant="ghost" disabled={isLoading} onClick={onClose}>
+        <Button
+          disabled={isLoading}
+          onClick={onClose}
+          variant="ghost"
+          className="w-full"
+        >
           Cancelar
         </Button>
       </div>

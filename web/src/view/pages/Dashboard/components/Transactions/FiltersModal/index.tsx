@@ -6,12 +6,19 @@ import { Modal } from '@view/components/Modal';
 import { useFiltersModalController } from './useFiltersModalController';
 
 type FiltersModalProps = {
-  onApplyFilters: (filters: { bankAccountId: string | undefined; year: number }) => void;
+  onApplyFilters: (filters: {
+    bankAccountId: string | undefined;
+    year: number;
+  }) => void;
   onClose: () => void;
   open: boolean;
 };
 
-export function FiltersModal({ onApplyFilters, onClose, open }: FiltersModalProps) {
+export function FiltersModal({
+  onApplyFilters,
+  onClose,
+  open,
+}: FiltersModalProps) {
   const {
     bankAccounts,
     handleChangeYear,
@@ -50,7 +57,9 @@ export function FiltersModal({ onApplyFilters, onClose, open }: FiltersModalProp
             <ChevronLeftIcon className="h-6 w-6" />
           </button>
 
-          <span className="flex-1 text-center text-button-sm">{selectedYear}</span>
+          <span className="flex-1 text-center text-button-sm">
+            {selectedYear}
+          </span>
 
           <button
             onClick={() => handleChangeYear(1)}
@@ -63,7 +72,12 @@ export function FiltersModal({ onApplyFilters, onClose, open }: FiltersModalProp
 
       <Button
         className="w-full"
-        onClick={() => onApplyFilters({ bankAccountId: selectedBankAccountId, year: selectedYear })}
+        onClick={() =>
+          onApplyFilters({
+            bankAccountId: selectedBankAccountId,
+            year: selectedYear,
+          })
+        }
       >
         Aplicar Filtros
       </Button>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useTransactions } from '@app/hooks/useTransactions';
+import { useTransactions } from '@app/hooks/transactions';
 import { GetAllTransactionsFilters } from '@app/services/transactionsService/getAll';
 import { useDashboard } from '../DashboardContext/useDashboard';
 
@@ -14,9 +14,12 @@ export function useTransactionsController() {
 
   const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
 
-  const { transactions, isFetching, isInitialLoading } = useTransactions(filters);
+  const { transactions, isFetchingTransactions, isInitialLoading } =
+    useTransactions(filters);
 
-  function handleChangeFilters<T extends keyof GetAllTransactionsFilters>(filter: T) {
+  function handleChangeFilters<T extends keyof GetAllTransactionsFilters>(
+    filter: T
+  ) {
     return (value: GetAllTransactionsFilters[T]) => {
       setFilters(prevFilter => ({
         ...prevFilter,
@@ -33,7 +36,10 @@ export function useTransactionsController() {
     setIsFiltersModalOpen(false);
   }
 
-  function handleApplyFilters(filters: { bankAccountId: string | undefined; year: number }) {
+  function handleApplyFilters(filters: {
+    bankAccountId: string | undefined;
+    year: number;
+  }) {
     handleChangeFilters('bankAccountId')(filters.bankAccountId);
     handleChangeFilters('year')(filters.year);
     handleCloseFiltersModal();
@@ -48,7 +54,7 @@ export function useTransactionsController() {
     handleOpenFiltersModal,
     isFiltersModalOpen,
     isInitialLoading,
-    isLoading: isFetching,
+    isLoading: isFetchingTransactions,
     transactions,
   };
 }
