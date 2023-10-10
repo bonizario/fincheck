@@ -3,8 +3,14 @@ import axios from 'axios';
 import { LOCAL_STORAGE_KEYS } from '../config/constants';
 import { sleep } from '../utils/sleep';
 
+const { VITE_API_BASE_URL, DEV: IS_DEVELOPMENT } = import.meta.env;
+
+const VITE_API_RESPONSE_SLEEP_MS = Number(
+  import.meta.env.VITE_API_RESPONSE_SLEEP_MS
+);
+
 export const httpClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: VITE_API_BASE_URL,
 });
 
 httpClient.interceptors.request.use(config => {
@@ -20,7 +26,9 @@ httpClient.interceptors.request.use(config => {
 });
 
 httpClient.interceptors.response.use(async data => {
-  await sleep();
+  if (IS_DEVELOPMENT && VITE_API_RESPONSE_SLEEP_MS) {
+    await sleep(VITE_API_RESPONSE_SLEEP_MS);
+  }
 
   return data;
 });
