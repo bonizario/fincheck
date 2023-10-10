@@ -1,0 +1,10 @@
+* text eol=lf
+
+/api/*.js linguist-detectable=false
+/api/.env linguist-detectable=false
+/api/.env.* linguist-detectable=false
+/api/*.http linguist-detectable=false
+
+/web/*.js linguist-detectable=false
+/web/.env linguist-detectable=false
+/web/.env.* linguist-detectable=false
