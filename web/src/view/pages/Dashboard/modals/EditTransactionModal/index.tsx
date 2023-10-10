@@ -9,6 +9,8 @@ import { Input } from '@view/components/Input';
 import { Modal } from '@view/components/Modal';
 import { Select } from '@view/components/Select';
 import { useEditTransactionModalController } from './useEditTransactionModalController';
+import { ConfirmDeleteModal } from '@view/components/ConfirmDeleteModal';
+import { TrashIcon } from '@view/components/icons/TrashIcon';
 
 type EditTransactionModalProps = {
   onClose: () => void;
@@ -26,7 +28,12 @@ export function EditTransactionModal({
     categories,
     control,
     errors,
+    handleCloseConfirmDeleteModal,
+    handleConfirmDelete,
+    handleOpenConfirmDeleteModal,
     handleSubmit,
+    isConfirmDeleteModalOpen,
+    isDeletingTransaction,
     isLoading,
     register,
   } = useEditTransactionModalController(onClose, transactionBeingEdited);
@@ -36,7 +43,21 @@ export function EditTransactionModal({
       onClose={onClose}
       open={open}
       title={`Editar ${TRANSACTION_TYPE[transactionBeingEdited!.type]}`}
+      rightAction={
+        <button type="button" onClick={handleOpenConfirmDeleteModal}>
+          <TrashIcon className="h-6 w-6 text-red-900" />
+        </button>
+      }
     >
+      <ConfirmDeleteModal
+        isLoading={isDeletingTransaction}
+        onConfirm={handleConfirmDelete}
+        onClose={handleCloseConfirmDeleteModal}
+        open={isConfirmDeleteModalOpen}
+        title={`Tem certeza que deseja excluir esta ${TRANSACTION_TYPE[
+          transactionBeingEdited!.type
+        ].toLowerCase()}?`}
+      />
       <form onSubmit={handleSubmit} className="space-y-10">
         <fieldset>
           <span className="text-input-label text-gray-600">

@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
@@ -8,7 +8,10 @@ import { TRANSACTION_TYPE } from '@app/config/constants';
 import { type Transaction } from '@app/entities/Transaction';
 import { useGetAllBankAccounts } from '@app/hooks/bankAccounts';
 import { useGetAllCategories } from '@app/hooks/categories';
-import { useUpdateTransaction } from '@app/hooks/transactions';
+import {
+  useDeleteTransaction,
+  useUpdateTransaction,
+} from '@app/hooks/transactions';
 
 const schema = z.object({
   value: z.union([
@@ -43,11 +46,16 @@ export function useEditTransactionModalController(
     },
   });
 
+  const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] =
+    useState(false);
+
   const { bankAccounts } = useGetAllBankAccounts();
 
   const { categories: allCategories } = useGetAllCategories();
 
   const { isUpdatingTransaction, updateTransaction } = useUpdateTransaction();
+
+  const { isDeletingTransaction, deleteTransaction } = useDeleteTransaction();
 
   const categories = useMemo(() => {
     return allCategories.filter(
@@ -80,12 +88,36 @@ export function useEditTransactionModalController(
     }
   });
 
+  function handleOpenConfirmDeleteModal() {
+    setIsConfirmDeleteModalOpen(true);
+  }
+
+  function handleCloseConfirmDeleteModal() {
+    setIsConfirmDeleteModalOpen(false);
+  }
+
+  async function handleConfirmDelete() {
+    try {
+      await deleteTransaction(transaction!.id);
+
+      onClose();
+      toast.success('Conta deletada com sucesso!');
+    } catch {
+      toast.error('Erro ao deletar conta');
+    }
+  }
+
   return {
     bankAccounts,
     categories,
     control,
     errors,
+    handleCloseConfirmDeleteModal,
+    handleConfirmDelete,
+    handleOpenConfirmDeleteModal,
     handleSubmit,
+    isConfirmDeleteModalOpen,
+    isDeletingTransaction,
     isLoading: isUpdatingTransaction,
     register,
   };

@@ -52,3 +52,18 @@ export function useUpdateTransaction() {
 
   return { isUpdatingTransaction, updateTransaction };
 }
+
+export function useDeleteTransaction() {
+  const queryClient = useQueryClient();
+
+  const { isLoading: isDeletingTransaction, mutateAsync: deleteTransaction } =
+    useMutation({
+      mutationFn: transactionsService.remove,
+      onSuccess: () => {
+        queryClient.invalidateQueries(['transactions']);
+        queryClient.invalidateQueries(['bank-accounts']);
+      },
+    });
+
+  return { isDeletingTransaction, deleteTransaction };
+}
