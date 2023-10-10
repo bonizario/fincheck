@@ -182,8 +182,10 @@ export default {
         },
       },
       animation: {
-        'slide-down-and-fade': 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-        'slide-up-and-fade': 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-down-and-fade':
+          'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-up-and-fade':
+          'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
         'overlay-show': 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         'content-show': 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
