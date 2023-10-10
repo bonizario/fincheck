@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
 
 import { TRANSACTION_TYPE } from '@app/config/constants';
-import { type TransactionType } from '@app/entities/Transaction';
+import { type Transaction } from '@app/entities/Transaction';
 import { Button } from '@view/components/Button';
 import { CurrencyInput } from '@view/components/CurrencyInput';
 import { DatePickerInput } from '@view/components/DatePickerInput';
@@ -13,13 +13,13 @@ import { useEditTransactionModalController } from './useEditTransactionModalCont
 type EditTransactionModalProps = {
   onClose: () => void;
   open: boolean;
-  transactionType: TransactionType;
+  transactionBeingEdited: Transaction | null;
 };
 
 export function EditTransactionModal({
   onClose,
   open,
-  transactionType,
+  transactionBeingEdited,
 }: EditTransactionModalProps) {
   const {
     bankAccounts,
@@ -29,18 +29,18 @@ export function EditTransactionModal({
     handleSubmit,
     isLoading,
     register,
-  } = useEditTransactionModalController(transactionType);
+  } = useEditTransactionModalController(onClose, transactionBeingEdited);
 
   return (
     <Modal
       onClose={onClose}
       open={open}
-      title={`Editar ${TRANSACTION_TYPE[transactionType]}`}
+      title={`Editar ${TRANSACTION_TYPE[transactionBeingEdited!.type]}`}
     >
       <form onSubmit={handleSubmit} className="space-y-10">
         <fieldset>
           <span className="text-input-label text-gray-600">
-            Valor da {TRANSACTION_TYPE[transactionType]}
+            Valor da {TRANSACTION_TYPE[transactionBeingEdited!.type]}
           </span>
           <div className="flex flex-row-reverse items-center gap-2">
             <Controller
@@ -64,7 +64,9 @@ export function EditTransactionModal({
         <fieldset className="space-y-4">
           <Input
             error={errors.name?.message}
-            placeholder={`Nome da ${TRANSACTION_TYPE[transactionType]}`}
+            placeholder={`Nome da ${
+              TRANSACTION_TYPE[transactionBeingEdited!.type]
+            }`}
             type="text"
             {...register('name')}
           />
@@ -98,7 +100,9 @@ export function EditTransactionModal({
                   value: bankAccount.id,
                 }))}
                 placeholder={
-                  transactionType === 'INCOME' ? 'Receber com' : 'Pagar com'
+                  transactionBeingEdited!.type === 'INCOME'
+                    ? 'Receber com'
+                    : 'Pagar com'
                 }
                 value={value}
               />

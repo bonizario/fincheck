@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { transactionsService } from '@app/services/transactionsService';
 import { GetAllTransactionsFilters } from '@app/services/transactionsService/getAll';
 
-export function useTransactions(filters: GetAllTransactionsFilters) {
+export function useGetAllTransactions(filters: GetAllTransactionsFilters) {
   const {
     data: transactions,
     isFetching: isFetchingTransactions,
@@ -16,9 +16,39 @@ export function useTransactions(filters: GetAllTransactionsFilters) {
   });
 
   return {
-    transactions: transactions ?? [],
     isFetchingTransactions,
     isInitialLoading,
     refetchTransactions,
+    transactions: transactions ?? [],
   };
+}
+
+export function useCreateTransaction() {
+  const queryClient = useQueryClient();
+
+  const { isLoading: isCreatingTransaction, mutateAsync: createTransaction } =
+    useMutation({
+      mutationFn: transactionsService.create,
+      onSuccess: () => {
+        queryClient.invalidateQueries(['transactions']);
+        queryClient.invalidateQueries(['bank-accounts']);
+      },
+    });
+
+  return { isCreatingTransaction, createTransaction };
+}
+
+export function useUpdateTransaction() {
+  const queryClient = useQueryClient();
+
+  const { isLoading: isUpdatingTransaction, mutateAsync: updateTransaction } =
+    useMutation({
+      mutationFn: transactionsService.update,
+      onSuccess: () => {
+        queryClient.invalidateQueries(['transactions']);
+        queryClient.invalidateQueries(['bank-accounts']);
+      },
+    });
+
+  return { isUpdatingTransaction, updateTransaction };
 }

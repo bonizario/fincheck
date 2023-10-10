@@ -5,6 +5,7 @@ export type TransactionType = keyof typeof TRANSACTION_TYPE;
 export type Transaction = {
   id: string;
   bankAccountId: string;
+  categoryId: string;
   category?: {
     id: string;
     icon: string;

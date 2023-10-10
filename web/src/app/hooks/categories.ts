@@ -9,5 +9,5 @@ export function useGetAllCategories() {
     staleTime: Infinity,
   });
 
-  return { categories: categories ?? [], isFetchingCategories };
+  return { isFetchingCategories, categories: categories ?? [] };
 }

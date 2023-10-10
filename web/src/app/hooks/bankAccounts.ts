@@ -9,7 +9,7 @@ export function useGetAllBankAccounts() {
     staleTime: Infinity,
   });
 
-  return { bankAccounts: bankAccounts ?? [], isFetchingBankAccounts };
+  return { isFetchingBankAccounts, bankAccounts: bankAccounts ?? [] };
 }
 
 export function useCreateBankAccount() {
