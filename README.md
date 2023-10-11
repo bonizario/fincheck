@@ -1,73 +1,105 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <img src="./.github/banner.png" width="1600px" alt="Fincheck" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## About
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Fincheck is a platform for you to track your financial life.
 
-## Description
+Keep a history of all your transactions in one place.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Technologies
 
-## Installation
+![Technologies](https://skillicons.dev/icons?i=typescript,javascript,html,css,docker,git,prisma,nodejs,nestjs,react,vite,tailwindcss)
 
-```bash
-$ npm install
-```
+## Layout
+
+Layouts and design system are available on **Figma**: https://www.figma.com/file/RRBEBWgyQZbEYPQhzOc1OQ/Fincheck
 
 ## Running the app
 
+To install the dependencies and run the project, you must have [Node.js](https://nodejs.org/) installed on your machine. In this project, the LTS version [18.17.1](https://nodejs.org/en/blog/release/v18.17.1/) was used.
+
+The PostgreSQL database can be launched locally with a [Docker Container](https://www.docker.com/resources/what-container/).
+
+To clone this repository via terminal, use [Git](https://git-scm.com/).
+
+<table>
+<tr>
+<td width="1600px" align="center">Git Clone</td>
+</tr>
+<tr>
+<td width="1600px">
+
 ```bash
-# development
-$ npm run start
+# Clone via HTTPS
+git clone https://github.com/bonizario/fincheck.git
 
-# watch mode
-$ npm run start:dev
+# Clone via SSH
+git clone git@github.com:bonizario/fincheck.git
 
-# production mode
-$ npm run start:prod
+cd fincheck
 ```
 
-## Test
+</td>
+</table>
+
+<table>
+<tr>
+<td width="1600px" align="center">Docker</td>
+</tr>
+<tr>
+<td width="1600px">
 
 ```bash
-# unit tests
-$ npm run test
+# Create the container on the default port
+docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Show all containers
+docker ps -a
 ```
 
-## Support
+</td>
+</table>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+<table>
+<tr>
+<td width="1600px" align="center">API</td>
+</tr>
+<tr>
+<td width="1600px">
 
-## Stay in touch
+```bash
+# Install backend dependencies
+cd api && pnpm install
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Running the api
+pnpm start:dev
+```
 
-## License
+</td>
+</table>
 
-Nest is [MIT licensed](LICENSE).
+<table>
+<tr>
+<td width="1600px" align="center">Web</td>
+</tr>
+<tr>
+<td width="1600px">
+
+```bash
+# Install frontend dependencies
+cd web && pnpm install
+
+# Running the website
+pnpm dev
+```
+
+</td>
+</table>
+
+## Get in touch
+
+I'd be happy to share some thoughts with you!
+
+**LinkedIn**: https://www.linkedin.com/in/gabriel-bonizario/

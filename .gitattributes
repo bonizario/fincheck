@@ -1,4 +1,7 @@
-* text eol=lf
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
 
 /api/*.js linguist-detectable=false
 /api/.env linguist-detectable=false
