@@ -2,17 +2,17 @@
   <img src="./.github/banner.png" width="1600px" alt="Fincheck" />
 </p>
 
-## About
-
-Fincheck is a platform for you to track your financial life and keep a history of all your transactions in one place.
+<p align="center">
+  Track your financial life and keep a history of all your transactions in one place.
+</p>
 
 ## Technologies
 
-![Technologies](https://skillicons.dev/icons?i=typescript,javascript,html,css,docker,git,prisma,nodejs,nestjs,react,vite,tailwindcss)
+<img src="https://skillicons.dev/icons?i=typescript,javascript,html,css,docker,git,prisma,nodejs,nestjs,react,vite,tailwindcss" width="415px" alt="Technologies" />
 
 ## Design
 
-The design system is available on **[Figma](https://www.figma.com/file/RRBEBWgyQZbEYPQhzOc1OQ/Fincheck)**.
+The design system is available on [Figma](https://www.figma.com/file/RRBEBWgyQZbEYPQhzOc1OQ/Fincheck).
 
 ## Running the app
 
@@ -82,20 +82,22 @@ cp web/.env.development.example web/.env.development
 
 `VITE_SHOW_REACT_QUERY_DEVTOOLS` enables a FAB button that allows you to show and hide React Query `devtools`.
 
-#### Running the API
+#### Running the back end
 
 ```bash
-pnpm start:dev
+cd api && pnpm start:dev
 ```
 
 #### Running the front end
 
 ```bash
-pnpm dev
+cd web && pnpm dev
 ```
 
 ## Get in touch
 
-I'd be happy to share some thoughts with you!
+I intend to continue implementing new features to apply some concepts I have been studying.
+
+If you have any questions or suggestions, feel free to get in touch!
 
 **LinkedIn**: https://www.linkedin.com/in/gabriel-bonizario/
