@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { useGetAllBankAccounts } from '@app/hooks/bankAccounts';
 import { useWindowWidth } from '@app/hooks/useWindowWidth';
@@ -26,6 +26,10 @@ export function useBankAccountsController() {
       (total, bankAccount) => total + bankAccount.currentBalance,
       0
     );
+  }, [bankAccounts]);
+
+  useEffect(() => {
+    setSliderState({ isBeginning: true, isEnd: false });
   }, [bankAccounts]);
 
   return {
