@@ -7,7 +7,6 @@ export function useGetAllTransactions(filters: GetAllTransactionsFilters) {
   const {
     data: transactions,
     isFetching: isFetchingTransactions,
-    isInitialLoading,
     refetch: refetchTransactions,
   } = useQuery({
     queryKey: ['transactions', filters],
@@ -17,7 +16,6 @@ export function useGetAllTransactions(filters: GetAllTransactionsFilters) {
 
   return {
     isFetchingTransactions,
-    isInitialLoading,
     refetchTransactions,
     transactions: transactions ?? [],
   };

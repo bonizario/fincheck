@@ -20,7 +20,7 @@ export function useTransactionsController() {
 
   const { areValuesVisible } = useDashboard();
 
-  const { transactions, isFetchingTransactions, isInitialLoading } =
+  const { transactions, isFetchingTransactions } =
     useGetAllTransactions(filters);
 
   function handleChangeFilters<T extends keyof GetAllTransactionsFilters>(
@@ -72,7 +72,6 @@ export function useTransactionsController() {
     handleOpenFiltersModal,
     isEditModalOpen,
     isFiltersModalOpen,
-    isInitialLoading,
     isLoading: isFetchingTransactions,
     transactionBeingEdited,
     transactions,

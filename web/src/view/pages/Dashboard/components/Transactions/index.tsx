@@ -27,7 +27,6 @@ export function Transactions() {
     handleOpenFiltersModal,
     isEditModalOpen,
     isFiltersModalOpen,
-    isInitialLoading,
     isLoading,
     transactionBeingEdited,
     transactions,
@@ -43,121 +42,116 @@ export function Transactions() {
         open={isFiltersModalOpen}
       />
 
-      {isInitialLoading && (
-        <div className="flex h-full w-full items-center justify-center">
-          <Spinner className="h-9 w-9" />
+      <header>
+        <div className="flex justify-between">
+          <TransactionTypeDropdown
+            onSelect={handleChangeFilters('type')}
+            selectedType={filters.type}
+          />
+
+          <button
+            onClick={handleOpenFiltersModal}
+            className="flex items-center gap-2"
+          >
+            <span className="text-button-sm text-gray-800">Filtros</span>
+            <FilterIcon />
+          </button>
         </div>
-      )}
 
-      {!isInitialLoading && (
-        <>
-          <header>
-            <div className="flex justify-between">
-              <TransactionTypeDropdown
-                onSelect={handleChangeFilters('type')}
-                selectedType={filters.type}
-              />
+        <div className="relative mt-6">
+          <Swiper
+            centeredSlides
+            initialSlide={filters.month}
+            onSlideChange={swiper =>
+              handleChangeFilters('month')(swiper.realIndex)
+            }
+            slidesPerView={3}
+          >
+            <SliderNavigation />
 
-              <button
-                onClick={handleOpenFiltersModal}
-                className="flex items-center gap-2"
-              >
-                <span className="text-button-sm text-gray-800">Filtros</span>
-                <FilterIcon />
-              </button>
-            </div>
+            {MONTHS.map((month, index) => (
+              <SwiperSlide key={month} className="p-2">
+                {({ isActive }) => (
+                  <SliderOption
+                    isActive={isActive}
+                    month={month}
+                    index={index}
+                  />
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </header>
 
-            <div className="relative mt-6">
-              <Swiper
-                centeredSlides
-                initialSlide={filters.month}
-                onSlideChange={swiper =>
-                  handleChangeFilters('month')(swiper.realIndex)
-                }
-                slidesPerView={3}
-              >
-                <SliderNavigation />
-
-                {MONTHS.map((month, index) => (
-                  <SwiperSlide key={month} className="p-2">
-                    {({ isActive }) => (
-                      <SliderOption
-                        isActive={isActive}
-                        month={month}
-                        index={index}
-                      />
-                    )}
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </header>
-
-          <div className="mt-4 flex-1 space-y-2 overflow-y-auto">
-            {isLoading && (
-              <div className="flex h-full flex-col items-center justify-center space-y-4">
-                <Spinner className="h-9 w-9" />
-              </div>
-            )}
-
-            {!hasTransactions && !isLoading && (
-              <div className="flex h-full flex-col items-center justify-center space-y-4">
+      <div className="mt-4 flex-1 space-y-2 overflow-y-auto">
+        {!hasTransactions && (
+          <div className="flex h-full flex-col items-center justify-center space-y-4">
+            {!isLoading && (
+              <>
                 <img src={emptyState} alt="Empty state" className="h-40 w-40" />
                 <p className="text-center text-base-normal text-gray-700">
                   Não encontramos nenhuma transação!
                 </p>
-              </div>
-            )}
-
-            {hasTransactions && !isLoading && (
-              <>
-                {transactionBeingEdited && (
-                  <EditTransactionModal
-                    open={isEditModalOpen}
-                    onClose={handleCloseEditModal}
-                    transactionBeingEdited={transactionBeingEdited}
-                  />
-                )}
-
-                {transactions.map(transaction => (
-                  <div
-                    key={transaction.id}
-                    className="flex items-center justify-between gap-4 rounded-2xl bg-white p-4"
-                    role="button"
-                    onClick={() => handleOpenEditModal(transaction)}
-                  >
-                    <div className="flex flex-1 items-center gap-3">
-                      <CategoryIcon
-                        type={transaction.type}
-                        category={transaction.category?.icon}
-                      />
-                      <div>
-                        <strong className="block text-base-bold text-gray-800">
-                          {transaction.name}
-                        </strong>
-                        <span className="text-sm-normal text-gray-600">
-                          {formatDate(new Date(transaction.date))}
-                        </span>
-                      </div>
-                    </div>
-                    <span
-                      className={cn(
-                        'text-base-medium',
-                        transaction.type === 'INCOME' && 'text-green-800',
-                        transaction.type === 'EXPENSE' && 'text-red-800',
-                        !areValuesVisible && 'blur-[0.375rem]'
-                      )}
-                    >
-                      {transaction.type === 'INCOME' ? '+' : '-'}
-                      {formatCurrency(transaction.value)}
-                    </span>
-                  </div>
-                ))}
               </>
             )}
+            {isLoading && <Spinner className="h-9 w-9" />}
           </div>
-        </>
-      )}
+        )}
+
+        {hasTransactions && isLoading && (
+          <div className="flex h-full w-full items-center justify-center">
+            <Spinner className="h-9 w-9" />
+          </div>
+        )}
+
+        {hasTransactions && !isLoading && (
+          <>
+            {transactionBeingEdited && (
+              <EditTransactionModal
+                open={isEditModalOpen}
+                onClose={handleCloseEditModal}
+                transactionBeingEdited={transactionBeingEdited}
+              />
+            )}
+
+            {transactions.map(transaction => (
+              <div
+                key={transaction.id}
+                className="flex items-center justify-between gap-4 rounded-2xl bg-white p-4"
+                role="button"
+                onClick={() => handleOpenEditModal(transaction)}
+              >
+                <div className="flex flex-1 items-center gap-3">
+                  <CategoryIcon
+                    type={transaction.type}
+                    category={transaction.category?.icon}
+                  />
+                  <div>
+                    <strong className="block text-base-bold text-gray-800">
+                      {transaction.name}
+                    </strong>
+                    <span className="text-sm-normal text-gray-600">
+                      {formatDate(new Date(transaction.date))}
+                    </span>
+                  </div>
+                </div>
+                <span
+                  className={cn(
+                    'text-base-medium',
+                    transaction.type === 'INCOME' && 'text-green-800',
+                    transaction.type === 'EXPENSE' && 'text-red-800',
+                    !areValuesVisible && 'blur-[0.375rem]'
+                  )}
+                >
+                  {transaction.type === 'INCOME' ? '+' : '-'}
+                  {formatCurrency(transaction.value)}
+                </span>
+              </div>
+            ))}
+          </>
+        )}
+      </div>
     </div>
   );
 }
