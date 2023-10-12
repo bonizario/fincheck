@@ -30,7 +30,7 @@ export function useBankAccountsController() {
 
   useEffect(() => {
     setSliderState({ isBeginning: true, isEnd: false });
-  }, [bankAccounts]);
+  }, [isFetchingBankAccounts]);
 
   return {
     areValuesVisible,
